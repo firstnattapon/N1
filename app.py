@@ -78,13 +78,13 @@ class Run_model :
             diff =  a * p - self.start_capital 
             if (dataset.Predict[-1] == True) & (diff < -1.00) :
                 deribit.create_market_buy_order(self.pair_trade , abs(diff))
-                st.write( dataset.Predict[-1] , 'Buy'  , round(diff , 2) )
+                st.write( dataset.Predict[-1] , 'Buy' , round(diff , 2), round(a , 2) , round(p , 2) , round(c , 2))
 
             elif (dataset.Predict[-1] == False) & (diff > 1.00) :
                 deribit.create_market_sell_order(self.pair_trade , abs(diff))
-                st.write( dataset.Predict[-1] , 'Sell'  , round(diff , 2))
+                st.write( dataset.Predict[-1] , 'Sell' , round(diff , 2) , round(a , 2) , round(p , 2) , round(c , 2))
             else:
-                st.write( dataset.Predict[-1] , 'Wait'  , round(diff , 2))
+                st.write( dataset.Predict[-1] , 'Wait' , round(diff , 2) , round(a , 2) , round(p , 2) , round(c , 2))
 
             latest_iteration = st.empty()
             bar = st.progress(0)
