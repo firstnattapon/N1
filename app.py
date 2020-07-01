@@ -116,8 +116,8 @@ class Run_model :
 
 model =  Run_model()
 ex = model.ex_api
-st.write(ex.private_get_get_position({'instrument_name': 'ETH-PERPETUAL'}))
-
+params = {'currency': 'ETH'}
+st.write(ex.fetch_balance(params))
 
 
 
