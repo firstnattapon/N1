@@ -72,7 +72,7 @@ class Run_model :
         while True:
             deribit = self.ex_api
             dataset = self.deep
-            a =  deribit.private_get_get_position({'instrument_name': 'ETH-PERPETUAL'})['result']['size_currency']
+            a =  deribit.private_get_get_position({'instrument_name': 'ETH-PERPETUAL'})['result']#['size_currency']
             p = deribit.fetch_ticker(self.pair_trade)['info']['index_price']
             c = self.start_capital 
             diff =  (a * p) - self.start_capital 
