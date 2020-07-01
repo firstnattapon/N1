@@ -117,7 +117,4 @@ class Run_model :
 model =  Run_model()
 ex = model.ex_api
 params = {'currency': 'ETH'}
-st.write(ex.fetch_balance(params))
-
-
-
+st.write(ex.fetch_balance(params)['total']['ETH'])
