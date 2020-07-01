@@ -116,7 +116,8 @@ class Run_model :
 
 model =  Run_model()
 ex = model.ex_api
-st.write(pd.DataFrame(ex.private_get_get_position({'instrument_name': 'ETH-PERPETUAL'})['result']))
+# st.write(pd.DataFrame(ex.private_get_get_position({'instrument_name': 'ETH-PERPETUAL'})['result']))
+print(ex.private_get_get_position({'instrument_name': 'ETH-PERPETUAL'})['result'])
 
 
 
