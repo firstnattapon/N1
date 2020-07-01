@@ -75,7 +75,7 @@ class Run_model :
             a =  deribit.private_get_get_position({'instrument_name': 'ETH-PERPETUAL'})['result']['size_currency']
             p = deribit.fetch_ticker(self.pair_trade)['info']['index_price']
             c = self.start_capital 
-            diff =  a * p - self.start_capital 
+            diff =  (a * p) - self.start_capital 
             if (dataset.Predict[-1] == True) & (diff < -1.00) :
                 deribit.create_market_buy_order(self.pair_trade , abs(diff))
                 st.write( dataset.Predict[-1] , 'Buy' , round(diff , 2), round(p , 2))
