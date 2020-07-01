@@ -115,7 +115,7 @@ class Run_model :
 #         model.trade
 
 model =  Run_model()
-ex = ex_api.model
+ex = model.model
 st.write(pd.DataFrame(ex.private_get_get_position({'instrument_name': 'ETH-PERPETUAL'})['result']))
 
 
