@@ -72,7 +72,7 @@ class Run_model :
         while True:
             deribit = self.ex_api
             dataset = self.deep
-            a =  deribit.fetch_balance({'currency': 'ETH'})['total']['ETH']
+            a =  deribit.fetch_balance({'currency': 'ETH'})#['total']['ETH']
             st.write(a)
             p = deribit.fetch_ticker(self.pair_trade)['info']['index_price']
 #             Port_value  = (2.41 *(p) + -482.0)
