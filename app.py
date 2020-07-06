@@ -73,18 +73,20 @@ class Run_model :
             deribit = self.ex_api
             dataset = self.deep
             a =  deribit.fetch_balance({'currency': 'ETH'})['total']['ETH']
+            st.write(a)
             p = deribit.fetch_ticker(self.pair_trade)['info']['index_price']
+#             Port_value  = (2.41 *(p) + -482.0)
             c = self.start_capital 
             diff =  (a * p) - self.start_capital 
-            if (dataset.Predict[-1] == True) & (diff < -1.00) :
+            if (dataset.Predict[-2] == True) & (diff < -1.00) :
                 deribit.create_market_buy_order(self.pair_trade , abs(diff))
-                st.write( dataset.Predict[-1] , 'Buy' , round(diff , 2), round(p , 2) , round(a , 3))
+                st.write( dataset.Predict[-2] , 'Buy' , round(diff , 2), round(p , 2) , round(a , 3))
 
-            elif (dataset.Predict[-1] == False) & (diff > 1.00) :
+            elif (dataset.Predict[-2] == False) & (diff > 1.00) :
                 deribit.create_market_sell_order(self.pair_trade , abs(diff))
-                st.write( dataset.Predict[-1] , 'Sell' , round(diff , 2) , round(p , 2), round(a , 3))
+                st.write( dataset.Predict[-2] , 'Sell' , round(diff , 2) , round(p , 2), round(a , 3))
             else:
-                st.write( dataset.Predict[-1] , 'Wait' , round(diff , 2) , round(p , 2), round(a , 3))
+                st.write( dataset.Predict[-2] , 'Wait' , round(diff , 2) , round(p , 2), round(a , 3))
 
             latest_iteration = st.empty()
             bar = st.progress(0)
