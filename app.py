@@ -76,43 +76,48 @@ class Run_model :
             p = deribit.fetch_ticker(self.pair_trade)['info']['index_price']
             c = self.start_capital 
             diff =  (a * p) - self.start_capital 
-#             if (dataset.Predict[-2] == True) & (diff < -1.00) :
-#                 deribit.create_market_buy_order(self.pair_trade , abs(diff))
-#                 st.write( dataset.Predict[-2] , 'Buy' , round(diff , 2), round(p , 2) , round(a , 3))
+            
+            if (dataset.Predict[-2] == True) & (diff < -1.00) :
+                deribit.create_market_buy_order(self.pair_trade , abs(diff))
+                st.write( dataset.Predict[-2] , 'Buy' , round(diff , 2), round(p , 2) , round(a , 3))
 
-#             elif (dataset.Predict[-2] == False) & (diff > 1.00) :
-#                 deribit.create_market_sell_order(self.pair_trade , abs(diff))
-#                 st.write( dataset.Predict[-2] , 'Sell' , round(diff , 2) , round(p , 2), round(a , 3))
-#             else:
-#                 st.write( dataset.Predict[-2] , 'Wait' , round(diff , 2) , round(p , 2), round(a , 3))
-
-            deribit.create_market_buy_order(self.pair_trade , 1)
-
+            elif (dataset.Predict[-2] == False) & (diff > 1.00) :
+                deribit.create_market_sell_order(self.pair_trade , abs(diff))
+                st.write( dataset.Predict[-2] , 'Sell' , round(diff , 2) , round(p , 2), round(a , 3))
+            else:
+                st.write( dataset.Predict[-2] , 'Wait' , round(diff , 2) , round(p , 2), round(a , 3))
+                
             latest_iteration = st.empty()
             bar = st.progress(0)
             for i in range(100):
                 latest_iteration.text(f'Progress {i+1}')
                 bar.progress(i + 1)
                 sleep(self.sleep)
-
+                
+    @property             
+    def  trade_ (self):
+        deribit = self.ex_api
+        deribit.create_market_buy_order(self.pair_trade)
+          
 model =  Run_model()
 model.pair_trade = st.sidebar.text_input('Symbol' , 'ETH-PERPETUAL')
 model.apiKey = st.sidebar.text_input('apiKey' , "AtdG0K3k")
 model.secret = st.sidebar.text_input('apiKey' ,"lItUXWckP2PNN-uPnrP_h_0dsctCXdFVP9x73bwo3Nc")
 model.start_capital = st.sidebar.slider('start_capital' , 0 , 500 , 225)
 model.sleep = st.sidebar.slider('sleep' , 0.0 , 6.0 , 3.0)
+_ = model.trade_
 
-st.sidebar.text("_"*50)
-st.sidebar.text("start_capital : {}".format (model.start_capital))
-st.sidebar.text("Dense_11 : {}".format (model.Dense_11))
-st.sidebar.text("Dense_12 : {}".format (model.Dense_12))
-st.sidebar.text("Dense_21 : {}".format (model.Dense_21))
-st.sidebar.text("Dense_22 : {}".format (model.Dense_22))
-st.sidebar.text("Dense_31 : {}".format (model.Dense_31))
-st.sidebar.text("Dense_32 : {}".format (model.Dense_32))
-st.sidebar.text("_"*50)
-_ = model.trade
-    
+# st.sidebar.text("_"*50)
+# st.sidebar.text("start_capital : {}".format (model.start_capital))
+# st.sidebar.text("Dense_11 : {}".format (model.Dense_11))
+# st.sidebar.text("Dense_12 : {}".format (model.Dense_12))
+# st.sidebar.text("Dense_21 : {}".format (model.Dense_21))
+# st.sidebar.text("Dense_22 : {}".format (model.Dense_22))
+# st.sidebar.text("Dense_31 : {}".format (model.Dense_31))
+# st.sidebar.text("Dense_32 : {}".format (model.Dense_32))
+# st.sidebar.text("_"*50)
+# _ = model.trade
+
 #   if st.sidebar.button('Run_model'):
 #       model =  Run_model()
 #       model.trade
