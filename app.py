@@ -97,7 +97,7 @@ class Run_model :
     @property             
     def  trade_ (self):
         deribit = self.ex_api
-        deribit.create_market_buy_order(self.pair_trade)
+        deribit.create_market_buy_order(self.pair_trade , 1)
           
 model =  Run_model()
 model.pair_trade = st.sidebar.text_input('Symbol' , 'ETH-PERPETUAL')
