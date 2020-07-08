@@ -98,6 +98,7 @@ class Run_model :
     def  trade_ (self):
         deribit = self.ex_api
         deribit.create_market_buy_order(self.pair_trade , 1)
+        sleep(self.sleep)
         
         
 while True:
