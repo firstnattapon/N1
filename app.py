@@ -20,7 +20,7 @@ class Run_model :
         self.Dense_31 = -0.03202482
         self.Dense_32 = 0.04132303
         self.start_capital = 225.00
-        self.sleep = 0.6
+        self.sleep = 60
 
     @property
     def  ex_api (self):
