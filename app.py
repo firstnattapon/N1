@@ -20,7 +20,7 @@ class Run_model :
         self.Dense_31 = -0.03202482
         self.Dense_32 = 0.04132303
         self.start_capital = 225.00
-        self.sleep = 3
+        self.sleep = 0.6
 
     @property
     def  ex_api (self):
@@ -76,7 +76,17 @@ class Run_model :
             p = deribit.fetch_ticker(self.pair_trade)['info']['index_price']
             c = self.start_capital 
             diff =  (a * p) - self.start_capital 
-            if (dataset.Predict[-2] == True) & (diff < -1.00) :
+#             if (dataset.Predict[-2] == True) & (diff < -1.00) :
+#                 deribit.create_market_buy_order(self.pair_trade , abs(diff))
+#                 st.write( dataset.Predict[-2] , 'Buy' , round(diff , 2), round(p , 2) , round(a , 3))
+
+#             elif (dataset.Predict[-2] == False) & (diff > 1.00) :
+#                 deribit.create_market_sell_order(self.pair_trade , abs(diff))
+#                 st.write( dataset.Predict[-2] , 'Sell' , round(diff , 2) , round(p , 2), round(a , 3))
+#             else:
+#                 st.write( dataset.Predict[-2] , 'Wait' , round(diff , 2) , round(p , 2), round(a , 3))
+
+            if True :
                 deribit.create_market_buy_order(self.pair_trade , abs(diff))
                 st.write( dataset.Predict[-2] , 'Buy' , round(diff , 2), round(p , 2) , round(a , 3))
 
@@ -85,6 +95,7 @@ class Run_model :
                 st.write( dataset.Predict[-2] , 'Sell' , round(diff , 2) , round(p , 2), round(a , 3))
             else:
                 st.write( dataset.Predict[-2] , 'Wait' , round(diff , 2) , round(p , 2), round(a , 3))
+
 
             latest_iteration = st.empty()
             bar = st.progress(0)
