@@ -98,14 +98,16 @@ class Run_model :
     def  trade_ (self):
         deribit = self.ex_api
         deribit.create_market_buy_order(self.pair_trade , 1)
-          
-model =  Run_model()
-model.pair_trade = st.sidebar.text_input('Symbol' , 'ETH-PERPETUAL')
-# model.apiKey = st.sidebar.text_input('apiKey' , "AtdG0K3k")
-# model.secret = st.sidebar.text_input('apiKey' ,"lItUXWckP2PNN-uPnrP_h_0dsctCXdFVP9x73bwo3Nc")
-model.start_capital = st.sidebar.slider('start_capital' , 0 , 500 , 225)
-model.sleep = st.sidebar.slider('sleep' , 0.0 , 6.0 , 3.0)
-_ = model.trade_
+        
+        
+while True:
+    model =  Run_model()
+    model.pair_trade = st.sidebar.text_input('Symbol' , 'ETH-PERPETUAL')
+    # model.apiKey = st.sidebar.text_input('apiKey' , "AtdG0K3k")
+    # model.secret = st.sidebar.text_input('apiKey' ,"lItUXWckP2PNN-uPnrP_h_0dsctCXdFVP9x73bwo3Nc")
+    model.start_capital = st.sidebar.slider('start_capital' , 0 , 500 , 225)
+    model.sleep = st.sidebar.slider('sleep' , 0.0 , 6.0 , 3.0)
+    _ = model.trade_
 
 # st.sidebar.text("_"*50)
 # st.sidebar.text("start_capital : {}".format (model.start_capital))
