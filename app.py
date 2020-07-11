@@ -98,13 +98,13 @@ class Run_model :
     def  trade_ (self):
         deribit = self.ex_api
         deribit.create_market_buy_order(self.pair_trade , 1)
-        sleep(self.sleep)
+#         sleep(self.sleep)
         
         
 for _ in range(1):
     model =  Run_model()
-    st.text("model")
     _ = model.trade_
+    st.text("model")
     
         
         
