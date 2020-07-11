@@ -102,6 +102,7 @@ class Run_model :
         
         
 model =  Run_model()
+st.text("hi")
 _ = model.trade_
 
 # while True:
