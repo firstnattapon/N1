@@ -100,11 +100,16 @@ class Run_model :
         deribit.create_market_buy_order(self.pair_trade , 1)
 #         sleep(self.sleep)
         
+from sympy import *
+init_printing()
+OHLC4 = Symbol('OHLC4') 
+a =  (OHLC4 + 1000)**2
+st.write(a)
         
-for _ in range(1):
-    model =  Run_model()
-    _ = model.trade_
-    st.text("model")
+# for _ in range(1):
+#     model =  Run_model()
+#     _ = model.trade_
+#     st.text("model")
     
         
         
