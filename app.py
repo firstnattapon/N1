@@ -152,7 +152,7 @@ class Run_model(object) :
 #____________________________________________________________________________  
 
 if __name__ == "__main__":
-    if st.button('คลิก Refresh รูปไม่ขึ้น หรือ Error'):
+    if st.sidebar.button('คลิก Refresh รูปไม่ขึ้น หรือ Error'):
         st.subheader('Information\n')
         if st.checkbox('Information'):
             st.markdown("""\n
