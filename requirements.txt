@@ -4,3 +4,6 @@ ccxt == 1.30.51
 pandas-ta == 0.1.39b0
 sympy
 matplotlib
+seaborn
+numpy
+scipy
