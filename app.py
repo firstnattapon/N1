@@ -152,8 +152,7 @@ class Run_model(object) :
 #____________________________________________________________________________  
 
 if __name__ == "__main__":
-    if st.button('Say hello'):
-
+    if st.button('คลิก Refresh รูปไม่ขึ้น หรือ Error'):
         st.subheader('Information\n')
         if st.checkbox('Information'):
             st.markdown("""\n
@@ -451,8 +450,6 @@ if __name__ == "__main__":
         st.write("MudleyAcademy NO.43: Xrp:rpXTzCuXtjiPDFysxq8uNmtZBe9Xo97JbW, Tag:1024466261")
    
     else:
-        
-
         st.subheader('Information\n')
         if st.checkbox('Information'):
             st.markdown("""\n
@@ -745,15 +742,5 @@ if __name__ == "__main__":
                 plt.show()
         """
             st.code(code, language='python')
-
         st.write("_"*45)
         st.write("MudleyAcademy NO.43: Xrp:rpXTzCuXtjiPDFysxq8uNmtZBe9Xo97JbW, Tag:1024466261")        
-
-
-# # st.sidebar.text("_"*45)
-# pyplot = model.chart
-# pyplot = model.nav
-# if st.checkbox('df_plot'):
-#     st.write(pyplot.iloc[: , :])
-# st.text("")
-# st.write('\n\nhttps://github.com/firstnattapon/test-stream/edit/master/app.py')
