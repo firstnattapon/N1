@@ -1,5 +1,4 @@
 import ccxt
-import datetime as dt
 import datetime  
 import pandas as pd
 import numpy as np
