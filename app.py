@@ -12,7 +12,7 @@ pd.set_option("display.precision", 6)
 exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
 e = exchange.load_markets()
  
-filter 	=  st.sidebar.text_input('filter','T'))
+filter 	=  st.sidebar.text_input('filter','T')
 pair 		= [i for i in e if i[-1] == filter]
  
 n_changepoints =  25
