@@ -1,6 +1,7 @@
 streamlit == 0.62.0
 pandas == 1.0.5
 prophet
+fbprophet
 ccxt == 1.30.51
 matplotlib
 seaborn
