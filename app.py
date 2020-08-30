@@ -1,6 +1,6 @@
 import ccxt
 import datetime as dt
-from datetime import  datetime
+import datetime  
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -52,11 +52,6 @@ ax1.plot(pct.sum_buy)
 ax1.plot(pct.sum_sell)
 ax2.plot(pct.sum_all)
 st.pyplot()
-
-
-
-
-
 
 
 
