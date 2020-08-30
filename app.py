@@ -11,15 +11,14 @@ pd.set_option("display.precision", 6)
 
 exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
 e = exchange.load_markets()
- 
-filter 	=  st.sidebar.text_input('filter','T')
-pair 		= [i for i in e if i[-1] == filter]
- 
-n_changepoints =  25
-shift_d = 0
-coin = st.sidebar.selectbox('coin',tuple(pair))
-timeframe = "1d"  
-limit =   5000
+
+filter 	  =  st.sidebar.text_input('filter','T')
+timeframe =  st.sidebar.selectbox('coin',('15m' ,'1h' , '4h' , '1d'))
+limit     =   st.sidebar.number_input('limit',5000)
+n_changepoints =  st.sidebar.number_input('n_changepoints',25)
+shift_d   = st.sidebar.number_input('shift_d',0)
+pair 		   = [i for i in e if i[-1] == filter]
+coin      = st.sidebar.selectbox('coin',tuple(pair))
 
 ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit )
 ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
@@ -48,7 +47,7 @@ pct['sum_sell'] = pct.cf_sell.cumsum()
 pct['cf_all'] =  pct.y.map( lambda  x : abs(x) )  
 pct['sum_all'] = pct.cf_all.cumsum() 
 
-f, (ax1, ax2) = plt.subplots(2  , figsize=(12,12) )
+f, (ax1, ax2) = plt.subplots(2  , figsize=(15,15) )
 ax1.plot(pct.sum_buy)
 ax1.plot(pct.sum_sell)
 ax2.plot(pct.sum_all)
@@ -725,7 +724,8 @@ st.pyplot()
 #             @property
 #             def  loop (self):
 #                 df =  self.dataset()
-#                 df = df[df.t >= self.loop_start] ; df = df[df.t <= self.loop_end]
+#                 df = df[df.t >= self.
+] ; df = df[df.t <= self.loop_end]
 #                 df =  df.set_index(df['t']) ; df = df.drop(['t'] , axis= 1 )
 #                 df = df.rename(columns={"o": "open", "h": "high"  , "l": "low", "c": "close" , "v": "volume"})
 #                 dataset = df  ; dataset = dataset.dropna()
