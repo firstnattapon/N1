@@ -36,7 +36,7 @@ m.fit(Prop)
 future = m.make_future_dataframe(periods=shift_d)
 forecast = m.predict(future)
 fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
-st.pyplot()
+st.pyplot() ; st.write(Prop['y'][-1])
 
 pct = pd.DataFrame()
 pct['y'] = Prop.y.pct_change()
