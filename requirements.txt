@@ -6,3 +6,4 @@ ccxt == 1.30.51
 matplotlib
 seaborn
 numpy
+datetime
