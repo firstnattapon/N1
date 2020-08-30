@@ -11,8 +11,10 @@ pd.set_option("display.precision", 6)
 
 exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
 e = exchange.load_markets()
-pair = [ i for i in e]
-
+ 
+filter 	=  st.sidebar.text_input('filter','T'))
+pair 		= [i for i in e if i[-1] == filter]
+ 
 n_changepoints =  25
 shift_d = 0
 coin = st.sidebar.selectbox('coin',tuple(pair))
@@ -51,7 +53,6 @@ ax1.plot(pct.sum_buy)
 ax1.plot(pct.sum_sell)
 ax2.plot(pct.sum_all)
 st.pyplot()
-
 
 
 # class Run_model(object) :
