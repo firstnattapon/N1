@@ -94,9 +94,20 @@ html = """
 """
 st.markdown(html, unsafe_allow_html=True)
 
-st.image("https://www.w3schools.com/howto/img_forest.jpg", width=300)
+st.image("https://www.w3schools.com/howto/img_forest.jpg", width=100)
 st.button("Show", key=1)
 
-st.image("https://www.w3schools.com/howto/img_forest.jpg", width=300)
+st.image("https://www.w3schools.com/howto/img_forest.jpg", width=100)
 st.button("Show", key=2)
+
+st.image("https://www.w3schools.com/howto/img_forest.jpg", width=100)
+st.button("Show", key=3)
+
+
+st.image("https://www.w3schools.com/howto/img_forest.jpg", width=100)
+st.button("Show", key=4)
+
+
+st.image("https://www.w3schools.com/howto/img_forest.jpg", width=100)
+st.button("Show", key=5)
 
