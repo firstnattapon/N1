@@ -56,45 +56,9 @@ st.pyplot()
 
 
 
-html = """
-  <style>
-    /* Disable overlay (fullscreen mode) buttons */
-    .overlayBtn {
-      display: none;
-    }
 
-    /* Remove horizontal scroll */
-    .element-container {
-      width: auto !important;
-    }
 
-    .fullScreenFrame > div {
-      width: auto !important;
-    }
-
-    /* 2nd thumbnail */
-    .element-container:nth-child(4) {
-      top: -266px;
-      left: 350px;
-    }
-
-    /* 1st button */
-    .element-container:nth-child(3) {
-      left: 10px;
-      top: -60px;
-    }
-
-    /* 2nd button */
-    .element-container:nth-child(5) {
-      left: 360px;
-      top: -326px;
-    }
-  </style>
-"""
-st.markdown(html, unsafe_allow_html=True)
-
-st.image("https://www.w3schools.com/howto/img_forest.jpg", width=300)
 st.button("Show", key=1)
-
-st.image("https://www.w3schools.com/howto/img_forest.jpg", width=300)
 st.button("Show", key=2)
+st.write('<style>div.Widget.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
