@@ -53,3 +53,6 @@ ax1.plot(pct.sum_all)
 ax2.plot(pct.sum_buy)
 ax2.plot(pct.sum_sell)
 st.pyplot() 
+
+
+st.write('<style>div.Widget.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
