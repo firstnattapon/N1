@@ -58,7 +58,7 @@ pd.set_option("display.precision", 6)
 
 
 
-st.button("Show", key=1)
-st.button("Show", key=1)
+# st.button("Show", key=1)
+# st.button("Show", key=1)
 st.write('<style>div.Widget.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
