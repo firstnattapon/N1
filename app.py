@@ -112,7 +112,7 @@ col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
 with col1:
-  header("365")
+  col1.header("365")
   _ = A()
 
 with col2:
