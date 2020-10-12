@@ -103,10 +103,18 @@ def D ():
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))   
   
-_ = A()
-_ = B()
-_ = C()
-_ = D()
+col1, col2 = st.beta_columns(2)
+
+with col1:
+  _ = A()
+
+with col2:
+  _ = B()
+  
+# _ = A()
+# _ = B()
+# _ = C()
+# _ = D()
 
 
 # pct = pd.DataFrame()
