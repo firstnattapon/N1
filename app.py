@@ -28,7 +28,7 @@ shift_d   = st.sidebar.number_input('shift_d', 1)
 
 def A ():
   global shift_d
-  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=365 )
+  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=90 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -48,7 +48,7 @@ def A ():
 
 def B ():
   global shift_d
-  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=270 )
+  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=180 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -69,7 +69,7 @@ def B ():
   
 def C ():
   global shift_d
-  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=180 )
+  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=270 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -90,7 +90,7 @@ def C ():
   
 def D ():
   global shift_d
-  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=90 )
+  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=365 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -112,19 +112,19 @@ col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
 with col1:
-  col1.text("365")
+  col1.text("90")
   _ = A()
 
 with col2:
-  col2.text("270")
+  col2.text("180")
   _ = B()
 
 with col3:
-  col3.text("180")
+  col3.text("270")
   _ = C()
 
 with col4:
-  col4.text("90")
+  col4.text("365")
   _ = D() 
  
 # _ = A()
