@@ -23,7 +23,7 @@ pair 		   = [i for i in e if i[-1] == filter]
 coin      = st.sidebar.selectbox('coin',tuple(pair))
 timeframe =  st.sidebar.selectbox('coin',('1d' , '15m' ,'1h' , '4h'))
 # limit     =   st.sidebar.selectbox('limit',(180 , 270 , 365))
-n_changepoints =  st.sidebar.number_input('n_changepoints',25)
+n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
 shift_d   = st.sidebar.number_input('shift_d', 1)
 
 def A ():
