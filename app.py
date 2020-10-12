@@ -125,6 +125,7 @@ with col4:
 # _ = C()
 # _ = D()
 
+
 # pct = pd.DataFrame()
 # pct['y'] = Prop.y.pct_change()
 # pct['cf_buy'] =  pct.y.map( lambda  x : np.where (x > 0 , x  , 0 ))  
