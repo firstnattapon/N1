@@ -59,8 +59,8 @@ def B ():
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))
 
-A()
-B()
+_ = A()
+_ = B()
 
 pct = pd.DataFrame()
 pct['y'] = Prop.y.pct_change()
