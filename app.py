@@ -112,19 +112,21 @@ col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
 with col1:
-  col1.header("365")
+  col1.text("365")
   _ = A()
 
 with col2:
+  col2.text("270")
   _ = B()
 
 with col3:
+  col3.text("180")
   _ = C()
 
 with col4:
+  col4.text("90")
   _ = D() 
-  
-  
+ 
 # _ = A()
 # _ = B()
 # _ = C()
