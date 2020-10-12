@@ -7,6 +7,7 @@ import streamlit as st
 from fbprophet import Prophet
 from fbprophet.plot import add_changepoints_to_plot
 pd.set_option("display.precision", 6)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 # sns.set_style("whitegrid")
 
 exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
