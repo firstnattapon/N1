@@ -61,7 +61,8 @@ def B ():
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))
   
- def C ():
+  
+def C ():
   global shift_d
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=180 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
@@ -82,7 +83,7 @@ def B ():
   st.pyplot() ; #st.write(Prop.tail(1)) 
   
   
- def D ():
+def D ():
   global shift_d
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=90 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
@@ -102,7 +103,6 @@ def B ():
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))   
   
-
 _ = A()
 _ = B()
 _ = C()
