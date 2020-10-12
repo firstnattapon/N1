@@ -21,7 +21,7 @@ timeframe =  st.sidebar.selectbox('coin',('1d' , '15m' ,'1h' , '4h'))
 n_changepoints =  st.sidebar.number_input('n_changepoints',25)
 shift_d   = st.sidebar.number_input('shift_d', 1)
 
-def A :
+def A ():
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=90 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
@@ -40,7 +40,7 @@ def A :
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))
 
-def B :
+def B ():
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=180 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
