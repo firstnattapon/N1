@@ -22,13 +22,13 @@ n_changepoints =  st.sidebar.number_input('n_changepoints',25)
 shift_d   = st.sidebar.number_input('shift_d', 1)
 
 def A ():
-
+  global shift_d
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=90 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
 
-  shift_d = global shift_d
+  shift_d = shift_d
   Prop = df
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
@@ -42,6 +42,7 @@ def A ():
   st.pyplot() ; #st.write(Prop.tail(1))
 
 def B ():
+  global shift_d
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=180 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
