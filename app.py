@@ -8,7 +8,12 @@ from fbprophet import Prophet
 from fbprophet.plot import add_changepoints_to_plot
 pd.set_option("display.precision", 6)
 st.set_option('deprecation.showPyplotGlobalUse', False)
-st.set_option('wideMode' , True)
+st.beta_set_page_config(
+  page_title="Ex-stream-ly Cool App",
+  page_icon="🧊",
+  layout="wide",
+  initial_sidebar_state="expanded")
+
 # sns.set_style("whitegrid")
 
 exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
