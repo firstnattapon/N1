@@ -8,6 +8,7 @@ from fbprophet import Prophet
 from fbprophet.plot import add_changepoints_to_plot
 pd.set_option("display.precision", 6)
 st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option('wideMode' , True)
 # sns.set_style("whitegrid")
 
 exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
@@ -104,18 +105,25 @@ def D ():
   st.pyplot() ; #st.write(Prop.tail(1))   
   
 col1, col2 = st.beta_columns(2)
+col3, col4 = st.beta_columns(2)
 
 with col1:
+  header("365")
   _ = A()
 
 with col2:
   _ = B()
+
+with col3:
+  _ = C()
+
+with col4:
+  _ = D() 
   
 # _ = A()
 # _ = B()
 # _ = C()
 # _ = D()
-
 
 # pct = pd.DataFrame()
 # pct['y'] = Prop.y.pct_change()
