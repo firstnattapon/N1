@@ -124,3 +124,4 @@ _ = D()
 # ax2.plot(pct.sum_buy)
 # ax2.plot(pct.sum_sell)
 # st.pyplot() 
+
