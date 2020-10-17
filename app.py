@@ -22,8 +22,7 @@ filter 	  =  st.sidebar.text_input('filter','T')
 pair 		   = [i for i in e if i[-1] == filter]
 
 coin_beta_expander = st.sidebar.beta_expander('coin')
-with coin_beta_expander:  
-  coin = st.sidebar.radio('coin',tuple(pair))
+  coin = coin_beta_expander.radio('coin',tuple(pair))
   
 timeframe =  st.sidebar.selectbox('time',('1d' , '15m' ,'1h' , '4h'))
 # limit     =   st.sidebar.selectbox('limit',(180 , 270 , 365))
