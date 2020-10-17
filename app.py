@@ -131,24 +131,28 @@ with col1_expander:
 
 
 with col1:
-  col1.text("90")
   Prop = A()
-  sum_all(Prop)
+  col1_expander = st.beta_expander('90')
+  with col1_expander:  
+    sum_all(Prop)
 
 with col2:
-  col2.text("180")
   Prop = B()
-  sum_all(Prop)
+  col2_expander = st.beta_expander('180')
+  with col2_expander:  
+    sum_all(Prop)
   
 with col3:
-  col3.text("270")
   Prop = C()
-  sum_all(Prop)
-  
+  col3_expander = st.beta_expander('270')
+  with col3_expander:  
+    sum_all(Prop)  
+    
 with col4:
-  col4.text("365")
   Prop = D() 
-  sum_all(Prop)
+  col4_expander = st.beta_expander('365')
+  with col4_expander:  
+    sum_all(Prop)  
   
 #   f, (ax1, ax2) = plt.subplots(2  , figsize=(15,15) )
 #   ax1.plot(pct.sum_all)
