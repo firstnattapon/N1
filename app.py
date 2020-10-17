@@ -45,6 +45,7 @@ def A ():
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))
+  return Prop
 
 def B ():
   global shift_d
@@ -65,7 +66,7 @@ def B ():
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))
-  
+  return Prop
   
 def C ():
   global shift_d
@@ -86,7 +87,7 @@ def C ():
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1)) 
-  
+  return Prop
   
 def D ():
   global shift_d
@@ -109,26 +110,8 @@ def D ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop
   
-col1, col2 = st.beta_columns(2)
-col3, col4 = st.beta_columns(2)
-
-with col1:
-  col1.text("90")
-  _ = A()
-
-with col2:
-  col2.text("180")
-  _ = B()
-
-with col3:
-  col3.text("270")
-  _ = C()
-
-with col4:
-  col4.text("365")
-  Prop = D() 
- 
-
+  
+def sum_all (Prop):
   pct = pd.DataFrame()
   pct['y'] = Prop.y.pct_change()
   pct['cf_buy'] =  pct.y.map( lambda  x : np.where (x > 0 , x  , 0 ))  
@@ -138,8 +121,30 @@ with col4:
   pct['cf_all'] =  pct.y.map( lambda  x : abs(x) )  
   pct['sum_all'] = pct.cf_all.cumsum() 
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all']]
-  st.write(pct.tail(1))
+  st.write(pct.tail(1))  
+  
+col1, col2 = st.beta_columns(2)
+col3, col4 = st.beta_columns(2)
 
+with col1:
+  col1.text("90")
+  Prop = A()
+  sum_all(Prop)
+
+with col2:
+  col2.text("180")
+  Prop = B()
+  sum_all(Prop)
+  
+with col3:
+  col3.text("270")
+  Prop = C()
+
+with col4:
+  col4.text("365")
+  Prop = D() 
+  sum_all(Prop)
+  
 #   f, (ax1, ax2) = plt.subplots(2  , figsize=(15,15) )
 #   ax1.plot(pct.sum_all)
 #   ax2.plot(pct.sum_buy)
