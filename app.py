@@ -158,3 +158,4 @@ with col4:
 #   ax2.plot(pct.sum_sell)
 #   st.pyplot() 
 
+
