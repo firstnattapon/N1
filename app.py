@@ -125,12 +125,15 @@ def sum_all (Prop):
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
+col1_expander = st.beta_expander()
+with col1_expander:
+  st.subheader('Hello there!')
+
+
 with col1:
   col1.text("90")
   Prop = A()
-  col1_expander = st.beta_expander()
-  with col1_expander:
-    sum_all(Prop)
+  sum_all(Prop)
 
 with col2:
   col2.text("180")
