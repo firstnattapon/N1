@@ -137,11 +137,12 @@ with col4:
   pct['sum_sell'] = pct.cf_sell.cumsum() 
   pct['cf_all'] =  pct.y.map( lambda  x : abs(x) )  
   pct['sum_all'] = pct.cf_all.cumsum() 
+  pct = pct[['sum_buy', 'sum_sell' ,'sum_all']]
   st.write(pct.tail(1))
 
-  f, (ax1, ax2) = plt.subplots(2  , figsize=(15,15) )
-  ax1.plot(pct.sum_all)
-  ax2.plot(pct.sum_buy)
-  ax2.plot(pct.sum_sell)
-  st.pyplot() 
+#   f, (ax1, ax2) = plt.subplots(2  , figsize=(15,15) )
+#   ax1.plot(pct.sum_all)
+#   ax2.plot(pct.sum_buy)
+#   ax2.plot(pct.sum_sell)
+#   st.pyplot() 
 
