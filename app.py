@@ -125,7 +125,7 @@ def sum_all (Prop):
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
-col1_expander = st.beta_expander()
+col1_expander = st.beta_expander('hi')
 with col1_expander:
   st.subheader('Hello there!')
 
