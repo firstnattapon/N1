@@ -20,7 +20,11 @@ e = exchange.load_markets()
 
 filter 	  =  st.sidebar.text_input('filter','T')
 pair 		   = [i for i in e if i[-1] == filter]
-coin      = st.sidebar.selectbox('coin',tuple(pair))
+
+coin = st.beta_expander('coin')
+with coin:  
+  coin      = st.sidebar.radio('coin',tuple(pair))
+  
 timeframe =  st.sidebar.selectbox('coin',('1d' , '15m' ,'1h' , '4h'))
 # limit     =   st.sidebar.selectbox('limit',(180 , 270 , 365))
 n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
@@ -124,11 +128,6 @@ def sum_all (Prop):
   
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
-
-col1_expander = st.beta_expander('hi')
-with col1_expander:
-  st.subheader('Hello there!')
-
 
 with col1:
   Prop = A()
