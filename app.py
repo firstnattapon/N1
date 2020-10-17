@@ -128,7 +128,9 @@ col3, col4 = st.beta_columns(2)
 with col1:
   col1.text("90")
   Prop = A()
-  sum_all(Prop)
+  col1_expander = st.beta_expander()
+  with col1_expander:
+    sum_all(Prop)
 
 with col2:
   col2.text("180")
