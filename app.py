@@ -21,11 +21,11 @@ e = exchange.load_markets()
 filter 	  =  st.sidebar.text_input('filter','T')
 pair 		   = [i for i in e if i[-1] == filter]
 
-coin = st.sidebar.beta_expander('coin')
-with coin:  
-  coin      = st.sidebar.radio('coin',tuple(pair))
+coin_beta_expander = st.sidebar.beta_expander('coin')
+with coin_beta_expander:  
+  coin = st.sidebar.radio('coin',tuple(pair))
   
-timeframe =  st.sidebar.selectbox('coin',('1d' , '15m' ,'1h' , '4h'))
+timeframe =  st.sidebar.selectbox('time',('1d' , '15m' ,'1h' , '4h'))
 # limit     =   st.sidebar.selectbox('limit',(180 , 270 , 365))
 n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
 shift_d   = st.sidebar.number_input('shift_d', 1)
@@ -131,25 +131,25 @@ col3, col4 = st.beta_columns(2)
 
 with col1:
   Prop = A()
-  col1_expander = st.beta_expander('90')
+  col1_expander = st.beta_expander('90' , expanded=True)
   with col1_expander:  
     sum_all(Prop)
 
 with col2:
   Prop = B()
-  col2_expander = st.beta_expander('180')
+  col2_expander = st.beta_expander('180' , expanded=True)
   with col2_expander:  
     sum_all(Prop)
   
 with col3:
   Prop = C()
-  col3_expander = st.beta_expander('270')
+  col3_expander = st.beta_expander('270' , expanded=True)
   with col3_expander:  
     sum_all(Prop)  
     
 with col4:
   Prop = D() 
-  col4_expander = st.beta_expander('365')
+  col4_expander = st.beta_expander('365' , expanded=True)
   with col4_expander:  
     sum_all(Prop)  
   
