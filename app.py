@@ -21,7 +21,7 @@ e = exchange.load_markets()
 filter 	  =  st.sidebar.text_input('filter','T')
 pair 		   = [i for i in e if i[-1] == filter]
 
-coin = st.beta_expander('coin')
+coin = st.sidebar.beta_expander('coin')
 with coin:  
   coin      = st.sidebar.radio('coin',tuple(pair))
   
