@@ -110,7 +110,6 @@ def D ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop
   
-  
 def sum_all (Prop):
   pct = pd.DataFrame()
   pct['y'] = Prop.y.pct_change()
@@ -139,7 +138,8 @@ with col2:
 with col3:
   col3.text("270")
   Prop = C()
-
+  sum_all(Prop)
+  
 with col4:
   col4.text("365")
   Prop = D() 
