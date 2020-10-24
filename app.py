@@ -155,7 +155,7 @@ def sum_all (Prop ,forecast):
 
 
 st.title("Let's create a table!")
-for i in   pair:
+for i in  pair:
     cols = st.beta_columns(1)
     Prop , forecast = z(i)
     cols[0].write(sum_all(Prop , forecast))
