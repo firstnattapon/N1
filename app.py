@@ -150,16 +150,17 @@ def sum_all (Prop ,forecast):
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all' , '%' ]]
   st.write(pct.tail(1))  
   
-col1, col2 = st.beta_columns(2)
-col3, col4 = st.beta_columns(2)
-col5 = st.beta_columns(1)
+# col1, col2 = st.beta_columns(2)
+# col3, col4 = st.beta_columns(2)
 
-for i in pair:
-  with col5:
+
+st.title("Let's create a table!")
+for i in range pair:
+    cols = st.beta_columns(1)
     Prop , forecast = z(i)
-    sum_all(Prop , forecast)
+    cols[0].write(sum_all(Prop , forecast))
 
- 
+
 
 # with col1:
 #   Prop , forecast = A()
