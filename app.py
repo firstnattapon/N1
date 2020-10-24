@@ -123,7 +123,7 @@ def sum_all (Prop):
   pct['sum_sell'] = pct.cf_sell.cumsum() 
   pct['cf_all'] =  pct.y.map( lambda  x : abs(x) )  
   pct['sum_all'] = pct.cf_all.cumsum() 
-  pct = pct[['sum_buy', 'sum_sell' ,'sum_all']]
+  pct = pct[['sum_buy', 'sum_sell' ,'sum_all' , 'ohlc' ]]
   st.write(pct.tail(1))  
   
 col1, col2 = st.beta_columns(2)
