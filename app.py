@@ -159,6 +159,7 @@ for i in  pair:
     st.write(i)  
     Prop , forecast = z(i)
     _ = cols[0].write(sum_all(Prop , forecast))
+    st.write('_')  
 
 
 
