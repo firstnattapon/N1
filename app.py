@@ -69,7 +69,7 @@ def B ():
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))
-  return Prop
+  return Prop , forecast
   
 def C ():
   global shift_d
@@ -89,8 +89,8 @@ def C ():
   future = m.make_future_dataframe(periods=shift_d)
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
-  st.pyplot() ; #st.write(Prop.tail(1)) 
-  return Prop  
+  st.pyplot() ; #st.write(Prop.tail(1))
+  return Prop , forecast
   
 def D ():
   global shift_d
@@ -111,7 +111,7 @@ def D ():
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))
-  return Prop
+  return Prop , forecast
   
 def sum_all (Prop ,forecast ):
   pct = pd.DataFrame()
@@ -141,19 +141,19 @@ with col2:
   Prop = B()
   col2_expander = st.beta_expander('180' , expanded=True)
   with col2_expander:  
-    sum_all(Prop)
+    sum_all(Prop , forecast)
   
 with col3:
   Prop = C()
   col3_expander = st.beta_expander('270' , expanded=True)
   with col3_expander:  
-    sum_all(Prop)  
+    sum_all(Prop , forecast)
     
 with col4:
   Prop = D() 
   col4_expander = st.beta_expander('365' , expanded=True)
   with col4_expander:  
-    sum_all(Prop)  
+    sum_all(Prop , forecast)
   
 #   f, (ax1, ax2) = plt.subplots(2  , figsize=(15,15) )
 #   ax1.plot(pct.sum_all)
