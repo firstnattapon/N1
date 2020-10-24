@@ -113,7 +113,7 @@ def D ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
   
-def sum_all (Prop ,forecast ):
+def sum_all (Prop ,forecast):
   pct = pd.DataFrame()
   pct['y'] = Prop.y.pct_change()
   pct['ohlc'] = Prop.y
@@ -125,7 +125,7 @@ def sum_all (Prop ,forecast ):
   pct['sum_sell'] = pct.cf_sell.cumsum() 
   pct['cf_all'] =  pct.y.map( lambda  x : abs(x) )  
   pct['sum_all'] = pct.cf_all.cumsum() 
-  pct = pct[['sum_buy', 'sum_sell' ,'sum_all' , 'ohlc' , 'yhat' , '%' ]]
+  pct = pct[['sum_buy', 'sum_sell' ,'sum_all' , '%' ]]
   st.write(pct.tail(1))  
   
 col1, col2 = st.beta_columns(2)
@@ -138,19 +138,19 @@ with col1:
     sum_all(Prop , forecast)
 
 with col2:
-  Prop = B()
+  Prop , forecast = B()
   col2_expander = st.beta_expander('180' , expanded=True)
   with col2_expander:  
     sum_all(Prop , forecast)
   
 with col3:
-  Prop = C()
+  Prop , forecast = C()
   col3_expander = st.beta_expander('270' , expanded=True)
   with col3_expander:  
     sum_all(Prop , forecast)
     
 with col4:
-  Prop = D() 
+  Prop , forecast = D() 
   col4_expander = st.beta_expander('365' , expanded=True)
   with col4_expander:  
     sum_all(Prop , forecast)
