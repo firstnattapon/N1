@@ -90,7 +90,7 @@ def C ():
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1)) 
-  return Prop
+  return Prop , forecast
   
 def D ():
   global shift_d
@@ -129,10 +129,11 @@ col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
 with col1:
-  Prop = A()
+  Prop , forecast = A()
   col1_expander = st.beta_expander('90' , expanded=True)
   with col1_expander:  
     sum_all(Prop)
+    st.write(forecast)
 
 with col2:
   Prop = B()
