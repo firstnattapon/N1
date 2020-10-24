@@ -127,7 +127,7 @@ def z (pair):
   Prop = Prop.iloc[ : , -2:]
 
   m = Prophet( n_changepoints = n_changepoints )
-  m.fit(Prop) 
+  _ = m.fit(Prop) 
   future = m.make_future_dataframe(periods=shift_d)
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
