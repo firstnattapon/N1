@@ -48,7 +48,7 @@ def A ():
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1))
-  return Prop
+  return Prop , forecast
 
 def B ():
   global shift_d
@@ -90,7 +90,7 @@ def C ():
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   st.pyplot() ; #st.write(Prop.tail(1)) 
-  return Prop , forecast
+  return Prop  
   
 def D ():
   global shift_d
