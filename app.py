@@ -154,20 +154,11 @@ col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 col5 = st.beta_columns(1)
 
-with col5:
-  for i in pair:
-    Prop , forecast = z(i)
-#     col1_expander = st.beta_expander('90' , expanded=True)
-      col5_expander = st.beta_container()
-      with col5_expander:  
-        sum_all(Prop , forecast)
-        
 for i in pair:
-    col1 = st.beta_columns(1)
-    with col1:
-      st.write(i)
-      Prop , forecast = z(i)
-      sum_all(Prop , forecast)
+  with col5:
+    Prop , forecast = z(i)
+    sum_all(Prop , forecast)
+
  
 
 # with col1:
