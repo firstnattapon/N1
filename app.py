@@ -155,7 +155,7 @@ def sum_all (Prop ,forecast):
 
 for i in  pair:
   cols = st.beta_columns(1)
-  cols[0] = write(i)  
+  cols[0] = st.write(i)  
   Prop , forecast = z(i)
   cols[0] = st.write(sum_all(Prop , forecast))
 
