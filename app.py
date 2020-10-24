@@ -135,7 +135,7 @@ def z (pair):
   return Prop , forecast
 
   
-def sum_all (Prop ,forecast , i):
+def sum_all (Prop ,forecast):
   pct = pd.DataFrame()
   pct['y'] = Prop.y.pct_change()
   pct['ohlc'] = Prop.y
@@ -148,9 +148,7 @@ def sum_all (Prop ,forecast , i):
   pct['cf_all'] =  pct.y.map( lambda  x : abs(x) )  
   pct['sum_all'] = pct.cf_all.cumsum() 
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all' , '%' ]]
-  pct = pct.tail(1)
-  pct.index = i 
-  st.write(pct)  
+  st.write(pct.tail(1))  
   
 # col1, col2 = st.beta_columns(2)
 # col3, col4 = st.beta_columns(2)
@@ -158,8 +156,9 @@ def sum_all (Prop ,forecast , i):
 
 for i in  pair:
     cols = st.beta_columns(1)
+    st.write(i)  
     Prop , forecast = z(i)
-    cols[0].write(sum_all(Prop , forecast, i))
+    cols[0].write(sum_all(Prop , forecast))
 
 
 
