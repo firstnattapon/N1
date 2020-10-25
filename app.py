@@ -193,6 +193,7 @@ with col0:
   df_f = df_f.index
   pair = df_f
   
+shift_d , coin , limit_a , limit_b , limit_c , limit_d , pair = data(pair)  
 with col1:
   Prop , forecast = A()
   col1_expander = st.beta_expander('90' , expanded=True)
