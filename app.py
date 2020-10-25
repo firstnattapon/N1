@@ -195,6 +195,7 @@ def sum_all (Prop ,forecast):
 #   col4_expander = st.beta_expander('365' , expanded=True)
 #   with col4_expander:  
 #     sum_all(Prop , forecast)
+
 Prop = z(pair[:1][-1])
 df_1 = sum_all_z(Prop)
 df_1.index = 'btc'
