@@ -129,14 +129,27 @@ def z (coin):
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
 
-  m = Prophet( n_changepoints = n_changepoints )
-  m.fit(Prop) 
-  future = m.make_future_dataframe(periods=shift_d)
-  forecast = m.predict(future)
-  fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
+#   m = Prophet( n_changepoints = n_changepoints )
+#   m.fit(Prop) 
+#   future = m.make_future_dataframe(periods=shift_d)
+#   forecast = m.predict(future)
+#   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
 #   st.pyplot() ; #st.write(Prop.tail(1))
-  return Prop , forecast
+  return Prop
 
+def sum_all_z (Prop):
+  pct = pd.DataFrame()
+  pct['y'] = Prop.y.pct_change()
+  pct['ohlc'] = Prop.y
+  pct['cf_buy'] =  pct.y.map( lambda  x : np.where (x > 0 , x  , 0 ))  
+  pct['sum_buy'] = pct.cf_buy.cumsum()    
+  pct['cf_sell'] =  pct.y.map( lambda  x : np.where (x < 0 , abs(x)  , 0) )  
+  pct['sum_sell'] = pct.cf_sell.cumsum() 
+  pct['cf_all'] =  pct.y.map( lambda  x : abs(x) )  
+  pct['sum_all'] = pct.cf_all.cumsum() 
+  pct = pct[['sum_buy', 'sum_sell' ,'sum_all']]
+  st.write(pct.tail(1))  
+  
 def sum_all (Prop ,forecast):
   pct = pd.DataFrame()
   pct['y'] = Prop.y.pct_change()
@@ -181,8 +194,8 @@ def sum_all (Prop ,forecast):
 
 for i in pair:
   st.write(i)
-  Prop , forecast = z(i)
-  sum_all(Prop , forecast)
+  Prop = z(i)
+  sum_all_z(Prop)
 
 
 
