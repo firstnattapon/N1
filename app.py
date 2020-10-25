@@ -147,7 +147,6 @@ def sum_all_z (Prop):
   pct = pct.reset_index()
 #   st.write(pct.tail(1))  
   return pct
-
   
 def sum_all (Prop ,forecast):
   pct = pd.DataFrame()
@@ -179,8 +178,9 @@ with col0:
     df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
   df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
   st.write(df_1)  
-  df_f = df.head(20)
+  df_f = df_1.head(20)
   df_f = df_f.index
+  global pair 
   pair = df_f
   
 with col1:
@@ -206,4 +206,3 @@ with col4:
   col4_expander = st.beta_expander('365' , expanded=True)
   with col4_expander:  
     sum_all(Prop , forecast)
-
