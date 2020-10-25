@@ -25,13 +25,16 @@ coin_beta_expander = st.sidebar.beta_expander('coin')
 coin = coin_beta_expander.radio('coin',tuple(pair))
   
 timeframe =  st.sidebar.selectbox('time',('1d' , '15m' ,'1h' , '4h'))
-# limit     =   st.sidebar.selectbox('limit',(180 , 270 , 365))
+limit_a     =   st.sidebar.number_input('limit_a',value=90)
+limit_b     =   st.sidebar.number_input('limit_b',value=180)
+limit_c     =   st.sidebar.number_input('limit_c',value=270)
+limit_d     =   st.sidebar.number_input('limit_d',value=365)
 n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
 shift_d   = st.sidebar.number_input('shift_d', 1)
 
 def A ():
-  global shift_d ;   global coin ;
-  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=90 )
+  global shift_d ;   global coin ; global limit_a
+  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit= limit_a )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -51,8 +54,8 @@ def A ():
   return Prop , forecast
 
 def B ():
-  global shift_d ;   global coin ;
-  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=180 )
+  global shift_d ;   global coin ; global limit_b
+  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_b )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -72,8 +75,8 @@ def B ():
   return Prop , forecast
   
 def C ():
-  global shift_d ;   global coin ;
-  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=270 )
+  global shift_d ;   global coin ;  global limit_c
+  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_c )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -93,8 +96,8 @@ def C ():
   return Prop , forecast
   
 def D ():
-  global shift_d ;   global coin ;
-  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=365 )
+  global shift_d ;   global coin ; global limit_c
+  ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_c )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
