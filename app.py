@@ -133,13 +133,6 @@ def z (coin):
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
-
-#   m = Prophet( n_changepoints = n_changepoints )
-#   m.fit(Prop) 
-#   future = m.make_future_dataframe(periods=shift_d)
-#   forecast = m.predict(future)
-#   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
-#   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop
 
 def sum_all_z (Prop):
@@ -187,7 +180,7 @@ with col0:
     df_2 = sum_all_z(Prop)
     df_2['index'] = i
     df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
-  df_1 =  df_1.sort_values(['sum_all'] , axis=1 ,ascending=False)
+  df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
   st.write(df_1)  
   
 with col1:
