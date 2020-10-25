@@ -19,10 +19,10 @@ st.beta_set_page_config(
 def data(f=None):
   exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
   e = exchange.load_markets()
-  
   filter 	  =  st.sidebar.text_input('filter','T')
+
   pair = f
-  if pair != None:
+  if f != None:
     pair   = [i for i in e if i[-1] == filter]
 
   coin_beta_expander = st.sidebar.beta_expander('coin')
