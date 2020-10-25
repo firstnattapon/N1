@@ -150,22 +150,20 @@ _, col0 , _  = st.beta_columns(3)
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
-vo = st.sidebar.beta_expander('vo')  
-with vo:
-  Prop = z(pair_1[:1][-1])
-  df_1 = sum_all_z(Prop)
-  df_1['index_coin'] = 'BTC/USDT'
-  for i in pair_1[1:]:
-    Prop = z(i)
-    df_2 = sum_all_z(Prop)
-    df_2['index_coin'] = i
-    df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
-  df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
-  st.sidebar.write(df_1)  
-  sort 	  =  st.sidebar.number_input('sort',value=40)
-  df_f = df_1.head(sort)
-  df_f = df_f.index_coin
-  pair_2 = df_f
+Prop = z(pair_1[:1][-1])
+df_1 = sum_all_z(Prop)
+df_1['index_coin'] = 'BTC/USDT'
+for i in pair_1[1:]:
+  Prop = z(i)
+  df_2 = sum_all_z(Prop)
+  df_2['index_coin'] = i
+  df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
+df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
+st.sidebar.write(df_1)  
+sort 	  =  st.sidebar.number_input('sort',value=40)
+df_f = df_1.head(sort)
+df_f = df_f.index_coin
+pair_2 = df_f
 
 coin_beta_expander = st.sidebar.beta_expander('coin')
 coin = coin_beta_expander.radio('coin',tuple(pair_2))
