@@ -131,7 +131,7 @@ def z (pair):
   future = m.make_future_dataframe(periods=shift_d)
   forecast = m.predict(future)
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
-  # st.pyplot() ; #st.write(Prop.tail(1))
+  st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
   
 def sum_all (Prop ,forecast):
@@ -153,10 +153,11 @@ def sum_all (Prop ,forecast):
 # col3, col4 = st.beta_columns(2)
 
 for i in  pair:
-  cols = st.beta_columns(1)
+  cols = st.beta_columns(2)
   cols[0] = st.write(i)  
   Prop , forecast = z(i)
   cols[0] = st.write(sum_all(Prop , forecast))
+  
 
 # with col1:
 #   Prop , forecast = A()
