@@ -207,7 +207,7 @@ for i in pair[1:]:
   df_2['index'] = i
   df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
   
-st.write(result)  
+st.write(df_1)  
 
 
 
