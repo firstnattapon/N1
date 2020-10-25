@@ -115,7 +115,7 @@ def D ():
 
 def z (pair):
   global shift_d ;   global coin ;
-  ohlcv =  exchange.fetch_ohlcv( pair  , timeframe , limit=90)
+  ohlcv =  exchange.fetch_ohlcv( pair  , timeframe , limit=180)
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -133,7 +133,6 @@ def z (pair):
   fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
   # st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
-
   
 def sum_all (Prop ,forecast):
   pct = pd.DataFrame()
