@@ -154,9 +154,10 @@ _, col0 , _  = st.beta_columns(3)
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
-vo = st.beta_expander('vo')
+sort 	  =  st.sidebar.number_input('sort',value=40)
+
+vo = st.sidebar.beta_expander('vo')
 with vo:
-  sort 	  =  st.sidebar.number_input('sort',value=40)
   with col0:
     Prop = z(pair_1[:1][-1])
     df_1 = sum_all_z(Prop)
