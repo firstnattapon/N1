@@ -113,7 +113,6 @@ def D ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
 
- 
 def sum_all (Prop ,forecast):
   pct = pd.DataFrame()
   pct['y'] = Prop.y.pct_change()
@@ -155,5 +154,4 @@ with col4:
   col4_expander = st.beta_expander('365' , expanded=True)
   with col4_expander:  
     sum_all(Prop , forecast)
-    
-    
+
