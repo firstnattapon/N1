@@ -15,23 +15,6 @@ st.beta_set_page_config(
 
 # sns.set_style("whitegrid")
 
-exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
-e = exchange.load_markets()
-
-filter 	  =  st.sidebar.text_input('filter','T')
-pair 		   = [i for i in e if i[-1] == filter]
-
-coin_beta_expander = st.sidebar.beta_expander('coin')
-coin = coin_beta_expander.radio('coin',tuple(pair))
-  
-timeframe =  st.sidebar.selectbox('time',('1d' , '15m' ,'1h' , '4h'))
-limit_a     =   st.sidebar.number_input('limit_a',value=90)
-limit_b     =   st.sidebar.number_input('limit_b',value=180)
-limit_c     =   st.sidebar.number_input('limit_c',value=270)
-limit_d     =   st.sidebar.number_input('limit_d',value=365)
-n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
-shift_d   = st.sidebar.number_input('shift_d', 1)
-
 @st.cache(suppress_st_warning=True)
 def A ():
   global shift_d ;   global coin ; global limit_a
@@ -183,6 +166,10 @@ with col0:
   df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
   st.write(df_1)  
   
+df_f = df.head(20)
+df_f = df.index
+pair = df_1
+
 with col1:
   Prop , forecast = A()
   col1_expander = st.beta_expander('90' , expanded=True)
@@ -194,7 +181,7 @@ with col2:
   col2_expander = st.beta_expander('180' , expanded=True)
   with col2_expander:  
     sum_all(Prop , forecast)
-  
+    
 with col3:
   Prop , forecast = C()
   col3_expander = st.beta_expander('270' , expanded=True)
@@ -208,8 +195,3 @@ with col4:
     sum_all(Prop , forecast)
 
 
-
-
-
-
-    
