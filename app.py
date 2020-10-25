@@ -149,7 +149,7 @@ def sum_all_z (Prop):
   pct['sum_all'] = pct.cf_all.cumsum() 
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all']]
   pct = pct.tail(1)
-  pct.index = 'btc'
+  pct = pct.reset_index()
 #   st.write(pct.tail(1))  
   return pct
 
@@ -197,6 +197,7 @@ def sum_all (Prop ,forecast):
 #     sum_all(Prop , forecast)
 Prop = z(pair[:1][-1])
 df_1 = sum_all_z(Prop)
+df_1.index = 'btc'
 st.write(df_1)  
 
 # for i in pair[1:]:
