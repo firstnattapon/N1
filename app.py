@@ -205,7 +205,7 @@ for i in pair[1:]:
   Prop = z(i)
   df_2 = sum_all_z(Prop)
   df_2['index'] = i
-  df_1 = pd.concat([df1, df_2], axis=0 , ignore_index=True)
+  df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
   
 st.write(result)  
 
