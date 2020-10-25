@@ -157,16 +157,16 @@ col3, col4 = st.beta_columns(2)
 with col0:
   Prop = z(pair_1[:1][-1])
   df_1 = sum_all_z(Prop)
-  df_1['index'] = 'BTC/USDT'
+  df_1['index_coin'] = 'BTC/USDT'
   for i in pair_1[1:]:
     Prop = z(i)
     df_2 = sum_all_z(Prop)
-    df_2['index'] = i
+    df_2['index_coin'] = i
     df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
   df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
   st.write(df_1)  
   df_f = df_1.head(20)
-  df_f = df_f.index
+  df_f = df_f.index_coin
   pair_2 = df_f
 
 coin_beta_expander = st.sidebar.beta_expander('coin')
