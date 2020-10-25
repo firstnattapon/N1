@@ -154,6 +154,8 @@ _, col0 , _  = st.beta_columns(3)
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
+
+sort 	  =  st.sidebar.number_input('sort',value=40)
 with col0:
   Prop = z(pair_1[:1][-1])
   df_1 = sum_all_z(Prop)
@@ -165,7 +167,7 @@ with col0:
     df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
   df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
   st.write(df_1)  
-  df_f = df_1.head(20)
+  df_f = df_1.head(sort)
   df_f = df_f.index_coin
   pair_2 = df_f
 
