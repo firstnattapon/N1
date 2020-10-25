@@ -169,7 +169,7 @@ with col0:
 sort 	  =  st.sidebar.number_input('sort',value=40)
 vo = st.sidebar.beta_expander('vo')  
 with vo:
-    st.sidebar.write(df_1)  
+  st.sidebar.write(df_1)  
   df_f = df_1.head(sort)
   df_f = df_f.index_coin
   pair_2 = df_f
