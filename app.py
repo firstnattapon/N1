@@ -187,7 +187,7 @@ with col0:
     df_2 = sum_all_z(Prop)
     df_2['index'] = i
     df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
-  df_1 =  df_1.sort_values('sum_all', axis=1 ,ascending=False)
+  df_1 =  df_1.sort_values(['sum_all'] , axis=1 ,ascending=False)
   st.write(df_1)  
   
 with col1:
