@@ -198,8 +198,7 @@ def sum_all (Prop ,forecast):
 
 Prop = z(pair[:1][-1])
 df_1 = sum_all_z(Prop)
-df_1['index'] = 'btc'
-st.write(df_1)  
+df_1['index'] = 'BTC/USDT'
 
 for i in pair[1:]:
   Prop = z(i)
