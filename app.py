@@ -148,6 +148,8 @@ def sum_all_z (Prop):
   pct['cf_all'] =  pct.y.map( lambda  x : abs(x) )  
   pct['sum_all'] = pct.cf_all.cumsum() 
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all']]
+  pct = pct.tail(1)
+  pct = pct.reset_index()
 #   st.write(pct.tail(1))  
   return pct
 
