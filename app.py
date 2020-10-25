@@ -201,7 +201,7 @@ df_1 = sum_all_z(Prop)
 df_1['index'] = 'btc'
 st.write(df_1)  
 
-for i in pair[1:][-1]:
+for i in pair[1:]:
   Prop = z(i)
   df_2 = sum_all_z(Prop)
   result = pd.concat([df1, df_2], axis=0)
