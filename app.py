@@ -195,12 +195,13 @@ def sum_all (Prop ,forecast):
 #     sum_all(Prop , forecast)
 Prop = z(pair[:1])
 df_1 = sum_all_z(Prop)
+st.write(df_1)  
 
-for i in pair[1:]:
-  Prop = z(i)
-  df_2 = sum_all_z(Prop)
-  result = pd.concat([df1, df_2], axis=0)
-  st.write(result)  
+# for i in pair[1:]:
+#   Prop = z(i)
+#   df_2 = sum_all_z(Prop)
+#   result = pd.concat([df1, df_2], axis=0)
+#   st.write(result)  
 
 
 
