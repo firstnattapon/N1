@@ -116,9 +116,10 @@ def D ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
 
+@st.cache(suppress_st_warning=True)
 def z (coin):
   global shift_d 
-  ohlcv =  exchange.fetch_ohlcv( coin  , '1h' , limit=1000 )
+  ohlcv =  exchange.fetch_ohlcv( coin  , '1h' , limit=1000)
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -169,44 +170,45 @@ def sum_all (Prop ,forecast):
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all' , '%' ]]
   st.write(pct.tail(1))  
   
+_, col0 , _  = st.beta_columns(3)
 # col1, col2 = st.beta_columns(2)
 # col3, col4 = st.beta_columns(2)
   
-# with col1:
-#   Prop , forecast = A()
-#   col1_expander = st.beta_expander('90' , expanded=True)
-#   with col1_expander:  
-#     sum_all(Prop , forecast)
-
-# with col2:
-#   Prop , forecast = B()
-#   col2_expander = st.beta_expander('180' , expanded=True)
-#   with col2_expander:  
-#     sum_all(Prop , forecast)
+with col0:
+  Prop = z(pair[:1][-1])
+  df_1 = sum_all_z(Prop)
+  df_1['index'] = 'BTC/USDT'
+  for i in pair[1:]:
+    Prop = z(i)
+    df_2 = sum_all_z(Prop)
+    df_2['index'] = i
+    df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
+  st.write(df_1)  
   
-# with col3:
-#   Prop , forecast = C()
-#   col3_expander = st.beta_expander('270' , expanded=True)
-#   with col3_expander:  
-#     sum_all(Prop , forecast)
+with col1:
+  Prop , forecast = A()
+  col1_expander = st.beta_expander('90' , expanded=True)
+  with col1_expander:  
+    sum_all(Prop , forecast)
+
+with col2:
+  Prop , forecast = B()
+  col2_expander = st.beta_expander('180' , expanded=True)
+  with col2_expander:  
+    sum_all(Prop , forecast)
+  
+with col3:
+  Prop , forecast = C()
+  col3_expander = st.beta_expander('270' , expanded=True)
+  with col3_expander:  
+    sum_all(Prop , forecast)
     
-# with col4:
-#   Prop , forecast = D() 
-#   col4_expander = st.beta_expander('365' , expanded=True)
-#   with col4_expander:  
-#     sum_all(Prop , forecast)
+with col4:
+  Prop , forecast = D() 
+  col4_expander = st.beta_expander('365' , expanded=True)
+  with col4_expander:  
+    sum_all(Prop , forecast)
 
-Prop = z(pair[:1][-1])
-df_1 = sum_all_z(Prop)
-df_1['index'] = 'BTC/USDT'
-
-for i in pair[1:]:
-  Prop = z(i)
-  df_2 = sum_all_z(Prop)
-  df_2['index'] = i
-  df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
-  
-st.write(df_1)  
 
 
 
