@@ -116,6 +116,26 @@ def D ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
 
+def z (coin):
+  ohlcv =  exchange.fetch_ohlcv( coin  , '1h' , limit=1000 )
+  ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
+  df =  pd.DataFrame(ohlcv)
+  df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
+
+  shift_d = shift_d
+  Prop = df
+  Prop['ds'] = Prop['t'] 
+  Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
+  Prop = Prop.iloc[ : , -2:]
+
+  m = Prophet( n_changepoints = n_changepoints )
+  m.fit(Prop) 
+  future = m.make_future_dataframe(periods=shift_d)
+  forecast = m.predict(future)
+  fig = add_changepoints_to_plot((m.plot(forecast)).gca(), m, forecast)
+#   st.pyplot() ; #st.write(Prop.tail(1))
+  return Prop , forecast
+
 def sum_all (Prop ,forecast):
   pct = pd.DataFrame()
   pct['y'] = Prop.y.pct_change()
@@ -131,32 +151,38 @@ def sum_all (Prop ,forecast):
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all' , '%' ]]
   st.write(pct.tail(1))  
   
-col1, col2 = st.beta_columns(2)
-col3, col4 = st.beta_columns(2)
+# col1, col2 = st.beta_columns(2)
+# col3, col4 = st.beta_columns(2)
   
-with col1:
-  Prop , forecast = A()
-  col1_expander = st.beta_expander('90' , expanded=True)
-  with col1_expander:  
-    sum_all(Prop , forecast)
+# with col1:
+#   Prop , forecast = A()
+#   col1_expander = st.beta_expander('90' , expanded=True)
+#   with col1_expander:  
+#     sum_all(Prop , forecast)
 
-with col2:
-  Prop , forecast = B()
-  col2_expander = st.beta_expander('180' , expanded=True)
-  with col2_expander:  
-    sum_all(Prop , forecast)
+# with col2:
+#   Prop , forecast = B()
+#   col2_expander = st.beta_expander('180' , expanded=True)
+#   with col2_expander:  
+#     sum_all(Prop , forecast)
   
-with col3:
-  Prop , forecast = C()
-  col3_expander = st.beta_expander('270' , expanded=True)
-  with col3_expander:  
-    sum_all(Prop , forecast)
+# with col3:
+#   Prop , forecast = C()
+#   col3_expander = st.beta_expander('270' , expanded=True)
+#   with col3_expander:  
+#     sum_all(Prop , forecast)
     
-with col4:
-  Prop , forecast = D() 
-  col4_expander = st.beta_expander('365' , expanded=True)
-  with col4_expander:  
-    sum_all(Prop , forecast)
+# with col4:
+#   Prop , forecast = D() 
+#   col4_expander = st.beta_expander('365' , expanded=True)
+#   with col4_expander:  
+#     sum_all(Prop , forecast)
+
+for i in pair:
+  st.write(i)
+  Prop , forecast = z(i)
+  sum_all(Prop , forecast)
+
 
 
     
