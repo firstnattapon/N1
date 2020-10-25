@@ -32,6 +32,7 @@ limit_d     =   st.sidebar.number_input('limit_d',value=365)
 n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
 shift_d   = st.sidebar.number_input('shift_d', 1)
 
+@st.cache(suppress_st_warning=True)
 def A ():
   global shift_d ;   global coin ; global limit_a
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit= limit_a )
@@ -53,6 +54,7 @@ def A ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
 
+@st.cache(suppress_st_warning=True)
 def B ():
   global shift_d ;   global coin ; global limit_b
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_b )
@@ -74,6 +76,7 @@ def B ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
   
+@st.cache(suppress_st_warning=True)
 def C ():
   global shift_d ;   global coin ;  global limit_c
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_c )
@@ -95,6 +98,7 @@ def C ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
   
+@st.cache(suppress_st_warning=True)
 def D ():
   global shift_d ;   global coin ; global limit_c
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_c )
@@ -183,6 +187,7 @@ with col0:
     df_2 = sum_all_z(Prop)
     df_2['index'] = i
     df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
+  df_1 =  df_1.sort_values('sum_all', axis=1 ,ascending=False)
   st.write(df_1)  
   
 with col1:
