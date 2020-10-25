@@ -15,22 +15,28 @@ st.beta_set_page_config(
 
 # sns.set_style("whitegrid")
 
-exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
-e = exchange.load_markets()
 
-filter 	  =  st.sidebar.text_input('filter','T')
-pair 		   = [i for i in e if i[-1] == filter]
-
-coin_beta_expander = st.sidebar.beta_expander('coin')
-coin = coin_beta_expander.radio('coin',tuple(pair))
+def data(f=None):
+  exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
+  e = exchange.load_markets()
   
-timeframe =  st.sidebar.selectbox('time',('1d' , '15m' ,'1h' , '4h'))
-limit_a     =   st.sidebar.number_input('limit_a',value=90)
-limit_b     =   st.sidebar.number_input('limit_b',value=180)
-limit_c     =   st.sidebar.number_input('limit_c',value=270)
-limit_d     =   st.sidebar.number_input('limit_d',value=365)
-n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
-shift_d   = st.sidebar.number_input('shift_d', 1)
+  filter 	  =  st.sidebar.text_input('filter','T')
+  pair = f
+  if pair != None:
+    pair   = [i for i in e if i[-1] == filter]
+
+  coin_beta_expander = st.sidebar.beta_expander('coin')
+  coin = coin_beta_expander.radio('coin',tuple(pair))
+
+  timeframe =  st.sidebar.selectbox('time',('1d' , '15m' ,'1h' , '4h'))
+  limit_a     =   st.sidebar.number_input('limit_a',value=90)
+  limit_b     =   st.sidebar.number_input('limit_b',value=180)
+  limit_c     =   st.sidebar.number_input('limit_c',value=270)
+  limit_d     =   st.sidebar.number_input('limit_d',value=365)
+  n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
+  shift_d   = st.sidebar.number_input('shift_d', 1)
+  return shift_d , coin , limit_a , limit_b , limit_c , limit_d , pair
+
 
 @st.cache(suppress_st_warning=True)
 def A ():
@@ -122,13 +128,12 @@ def D ():
 
 @st.cache(suppress_st_warning=True)
 def z (coin):
-  global shift_d 
   ohlcv =  exchange.fetch_ohlcv( coin  , '1h' , limit=1000)
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
 
-  shift_d = shift_d
+  shift_d = 1
   Prop = df
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
@@ -170,8 +175,10 @@ def sum_all (Prop ,forecast):
 _, col0 , _  = st.beta_columns(3)
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
-  
+
+
 with col0:
+  shift_d , coin , limit_a , limit_b , limit_c , limit_d , pair = data()
   Prop = z(pair[:1][-1])
   df_1 = sum_all_z(Prop)
   df_1['index'] = 'BTC/USDT'
@@ -182,6 +189,9 @@ with col0:
     df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
   df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
   st.write(df_1)  
+  df_f = df.head(20)
+  df_f = df_f.index
+  pair = df_f
   
 with col1:
   Prop , forecast = A()
@@ -207,10 +217,3 @@ with col4:
   with col4_expander:  
     sum_all(Prop , forecast)
 
-
-
-
-
-    
-
-    
