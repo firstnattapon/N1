@@ -171,8 +171,8 @@ def sum_all (Prop ,forecast):
   st.write(pct.tail(1))  
   
 _, col0 , _  = st.beta_columns(3)
-# col1, col2 = st.beta_columns(2)
-# col3, col4 = st.beta_columns(2)
+col1, col2 = st.beta_columns(2)
+col3, col4 = st.beta_columns(2)
   
 with col0:
   Prop = z(pair[:1][-1])
