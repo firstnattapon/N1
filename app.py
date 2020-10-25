@@ -194,7 +194,7 @@ def sum_all (Prop ,forecast):
 #   with col4_expander:  
 #     sum_all(Prop , forecast)
 Prop = z(pair[:1])
-df_1 = sum_all_z(Prop)
+df_1 = sum_all_z(Prop[-1])
 st.write(df_1)  
 
 # for i in pair[1:]:
