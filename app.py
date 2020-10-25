@@ -47,7 +47,6 @@ def sum_all_z (Prop):
   pct = pct.reset_index()
   return pct
 
-@st.cache(suppress_st_warning=True)
 def A ():
   global shift_d ;   global coin ; global limit_a
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit= limit_a )
@@ -69,7 +68,6 @@ def A ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
 
-@st.cache(suppress_st_warning=True)
 def B ():
   global shift_d ;   global coin ; global limit_b
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_b )
@@ -91,7 +89,6 @@ def B ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
   
-@st.cache(suppress_st_warning=True)
 def C ():
   global shift_d ;   global coin ;  global limit_c
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_c )
@@ -113,7 +110,6 @@ def C ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
   
-@st.cache(suppress_st_warning=True)
 def D ():
   global shift_d ;   global coin ; global limit_c
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_c )
@@ -154,8 +150,8 @@ _, col0 , _  = st.beta_columns(3)
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 
-
-with col0:
+vo = st.sidebar.beta_expander('vo')  
+with vo:
   Prop = z(pair_1[:1][-1])
   df_1 = sum_all_z(Prop)
   df_1['index_coin'] = 'BTC/USDT'
@@ -165,11 +161,8 @@ with col0:
     df_2['index_coin'] = i
     df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
   df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
- 
-sort 	  =  st.sidebar.number_input('sort',value=40)
-vo = st.sidebar.beta_expander('vo')  
-with vo:
   st.sidebar.write(df_1)  
+  sort 	  =  st.sidebar.number_input('sort',value=40)
   df_f = df_1.head(sort)
   df_f = df_f.index_coin
   pair_2 = df_f
