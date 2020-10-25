@@ -148,7 +148,9 @@ def sum_all_z (Prop):
   pct['cf_all'] =  pct.y.map( lambda  x : abs(x) )  
   pct['sum_all'] = pct.cf_all.cumsum() 
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all']]
-  st.write(pct.tail(1))  
+#   st.write(pct.tail(1))  
+  return pct
+
   
 def sum_all (Prop ,forecast):
   pct = pd.DataFrame()
@@ -191,11 +193,15 @@ def sum_all (Prop ,forecast):
 #   col4_expander = st.beta_expander('365' , expanded=True)
 #   with col4_expander:  
 #     sum_all(Prop , forecast)
+Prop = z(pair[:1])
+df_1 = sum_all_z(Prop)
 
-for i in pair:
-  st.write(i)
+for i in pair[1:]:
   Prop = z(i)
-  sum_all_z(Prop)
+  df_2 = sum_all_z(Prop)
+  result = pd.concat([df1, df_2], axis=0)
+  st.write(result)  
+
 
 
 
