@@ -180,7 +180,6 @@ with col0:
   st.write(df_1)  
   df_f = df_1.head(20)
   df_f = df_f.index
-  global pair 
   pair = df_f
   
 with col1:
