@@ -149,7 +149,7 @@ def sum_all_z (Prop):
   pct['sum_all'] = pct.cf_all.cumsum() 
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all']]
   pct = pct.tail(1)
-  pct = pct.reset_index()
+  pct.index = 'btc'
 #   st.write(pct.tail(1))  
   return pct
 
