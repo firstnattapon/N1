@@ -117,6 +117,7 @@ def D ():
   return Prop , forecast
 
 def z (coin):
+  global shift_d 
   ohlcv =  exchange.fetch_ohlcv( coin  , '1h' , limit=1000 )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
