@@ -167,7 +167,7 @@ df_f = df_f.index_coin
 pair_2 = df_f
 
 coin_beta_expander = st.sidebar.beta_expander('coin')
-coin = coin_beta_expander.radio('coin',[k , v for in enumerate(pair_2)])
+coin = coin_beta_expander.radio('coin',[k , v for k , v  in enumerate(pair_2)])
 timeframe =  st.sidebar.selectbox('time',('1d' , '15m' ,'1h' , '4h'))
 limit_a     =   st.sidebar.number_input('limit_a',value=90)
 limit_b     =   st.sidebar.number_input('limit_b',value=180)
