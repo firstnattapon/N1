@@ -149,7 +149,7 @@ def sum_all (Prop ,forecast):
 _, col0 , _  = st.beta_columns(3)
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
-_, w , _  = st.beta_columns(3)
+w, _ , _  = st.beta_columns(3)
 
 Prop = z(pair_1[:1][-1])
 df_1 = sum_all_z(Prop)
@@ -204,11 +204,11 @@ with col4:
     
 with w:
   wr = """
-  pair_0 ['ALGO/USDT', 'BAL/USDT', 'CHZ/USDT', 'KNC/USDT', 'MATIC/USDT', 'PAXG/USDT', 'XRP/USDT', 'XTZ/USDT']
-  pair_1 ['DOGE/USDT', 'DOT/USDT', 'EOS/USDT', 'OMG/USDT', 'THETA/USDT', 'TRX/USDT', 'ZEC/USDT']
-  pair_2 ['ADA/USDT', 'ATOM/USDT', 'BNB/USDT', 'ETC/USDT', 'MKR/USDT', 'RUNE/USDT']
-  pair_3 ['COMP/USDT', 'NEO/USDT', 'SUSHI/USDT', 'UNI/USDT', 'VET/USDT', 'YFI/USDT']
-  pair_4 ['BCH/USDT', 'BTC/USDT', 'ETH/USDT', 'LINK/USDT', 'LTC/USDT']
-  pair_5 ['SOL/USDT', 'SXP/USDT', 'TOMO/USDT']
+  pair_0 ['ALGO/USDT', 'BAL/USDT', 'CHZ/USDT', 'KNC/USDT', 'MATIC/USDT', 'PAXG/USDT', 'XRP/USDT', 'XTZ/USDT']\n
+  pair_1 ['DOGE/USDT', 'DOT/USDT', 'EOS/USDT', 'OMG/USDT', 'THETA/USDT', 'TRX/USDT', 'ZEC/USDT']\n
+  pair_2 ['ADA/USDT', 'ATOM/USDT', 'BNB/USDT', 'ETC/USDT', 'MKR/USDT', 'RUNE/USDT']\n
+  pair_3 ['COMP/USDT', 'NEO/USDT', 'SUSHI/USDT', 'UNI/USDT', 'VET/USDT', 'YFI/USDT']\n
+  pair_4 ['BCH/USDT', 'BTC/USDT', 'ETH/USDT', 'LINK/USDT', 'LTC/USDT']\n
+  pair_5 ['SOL/USDT', 'SXP/USDT', 'TOMO/USDT']\n
   """
   st.write(wr)  
