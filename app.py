@@ -24,6 +24,8 @@ filter_2 	  =  filter.text_input('filter_2','BULL/USDT')
 filter_3 	  =  filter.text_input('filter_3','BEAR/USDT')
 filter_4 	  =  filter.text_input('filter_4','DOWN/USDT')
 filter_5 	  =  filter.text_input('filter_5','UP/USDT')
+time_z      =  filter.text_input('time_z', 'h1')
+limit_z     =  filter.number_input('limit_z', 1000)
 
 pair_1   = [i for i in e if i[-1] == filter_1]
 pair_1   = [i for i in pair_1 if i[-9:] != filter_2]
@@ -33,7 +35,8 @@ pair_1   = [i for i in pair_1 if i[-7:] != filter_5]
 
 @st.cache(suppress_st_warning=True)
 def z (coin):
-  ohlcv =  exchange.fetch_ohlcv( coin  , '1h' , limit=1500)
+  global limit_z ; global time_z
+  ohlcv =  exchange.fetch_ohlcv( coin  , time_z , limit=limit_z)
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
