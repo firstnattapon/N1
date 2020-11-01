@@ -24,7 +24,7 @@ filter_2 	  =  filter.text_input('filter_2','BULL/USDT')
 filter_3 	  =  filter.text_input('filter_3','BEAR/USDT')
 filter_4 	  =  filter.text_input('filter_4','DOWN/USDT')
 filter_5 	  =  filter.text_input('filter_5','UP/USDT')
-time_z      =  filter.text_input('time_z', 'h1')
+time_z      =  filter.text_input('time_z', '1h')
 limit_z     =  filter.number_input('limit_z', 1000)
 
 pair_1   = [i for i in e if i[-1] == filter_1]
