@@ -17,8 +17,10 @@ st.beta_set_page_config(
 
 exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
 e = exchange.load_markets()
-filter 	  =  st.sidebar.text_input('filter','T')
-pair_1   = [i for i in e if i[-1] == filter]
+filter_1 	  =  st.sidebar.text_input('filter','T')
+filter_2 	  =  st.sidebar.text_input('filter','BULL/USDT')
+pair_1   = [i for i in e if i[-1] == filter_1]
+pair_1   = [i for i in pair_1 if i[-9:] == filter_2]
 
 @st.cache(suppress_st_warning=True)
 def z (coin):
