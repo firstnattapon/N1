@@ -15,7 +15,7 @@ st.beta_set_page_config(
 
 # sns.set_style("whitegrid")
 
-exchange = ccxt.coinbase({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
+exchange = ccxt.binanceus({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
 e = exchange.load_markets()
 
 filter = st.sidebar.beta_expander('filter')
@@ -33,7 +33,7 @@ pair_1   = [i for i in pair_1 if i[-7:] != filter_5]
 
 @st.cache(suppress_st_warning=True)
 def z (coin):
-  ohlcv =  exchange.fetch_ohlcv( coin  , '15m' , limit=5000)
+  ohlcv =  exchange.fetch_ohlcv( coin  , '1h' , limit=1000)
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
