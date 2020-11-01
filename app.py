@@ -224,3 +224,4 @@ with w:
     pair_5 ['SOL/USDT', 'SXP/USDT', 'TOMO/USDT']\n
     """
     st.write(wr)  
+    
