@@ -33,7 +33,7 @@ pair_1   = [i for i in pair_1 if i[-7:] != filter_5]
 
 @st.cache(suppress_st_warning=True)
 def z (coin):
-  ohlcv =  exchange.fetch_ohlcv( coin  , '15m' , limit=5000)
+  ohlcv =  exchange.fetch_ohlcv( coin  , '1h' , limit=1000)
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
   df =  pd.DataFrame(ohlcv)
   df.t = df.t.apply(lambda  x :  datetime.datetime.fromtimestamp(x)) ; df = df.dropna()
@@ -160,7 +160,7 @@ def sum_all (Prop ,forecast):
 _, col0 , _  = st.beta_columns(3)
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
-w, _ , _  = st.beta_columns(3)
+w , _  = st.beta_columns(2)
 
 Prop = z(pair_1[:1][-1])
 df_1 = sum_all_z(Prop)
@@ -213,12 +213,14 @@ with col4:
     sum_all(Prop , forecast)
     
 with w:
-  wr = """
-  pair_0 ['ALGO/USDT', 'BAL/USDT', 'CHZ/USDT', 'KNC/USDT', 'MATIC/USDT', 'PAXG/USDT', 'XRP/USDT', 'XTZ/USDT']\n
-  pair_1 ['DOGE/USDT', 'DOT/USDT', 'EOS/USDT', 'OMG/USDT', 'THETA/USDT', 'TRX/USDT', 'ZEC/USDT']\n
-  pair_2 ['ADA/USDT', 'ATOM/USDT', 'BNB/USDT', 'ETC/USDT', 'MKR/USDT', 'RUNE/USDT']\n
-  pair_3 ['COMP/USDT', 'NEO/USDT', 'SUSHI/USDT', 'UNI/USDT', 'VET/USDT', 'YFI/USDT']\n
-  pair_4 ['BCH/USDT', 'BTC/USDT', 'ETH/USDT', 'LINK/USDT', 'LTC/USDT']\n
-  pair_5 ['SOL/USDT', 'SXP/USDT', 'TOMO/USDT']\n
-  """
-  st.write(wr)  
+  vae = st.beta_expander('vae')
+  with vae:  
+    wr = """
+    pair_0 ['ALGO/USDT', 'BAL/USDT', 'CHZ/USDT', 'KNC/USDT', 'MATIC/USDT', 'PAXG/USDT', 'XRP/USDT', 'XTZ/USDT']\n
+    pair_1 ['DOGE/USDT', 'DOT/USDT', 'EOS/USDT', 'OMG/USDT', 'THETA/USDT', 'TRX/USDT', 'ZEC/USDT']\n
+    pair_2 ['ADA/USDT', 'ATOM/USDT', 'BNB/USDT', 'ETC/USDT', 'MKR/USDT', 'RUNE/USDT']\n
+    pair_3 ['COMP/USDT', 'NEO/USDT', 'SUSHI/USDT', 'UNI/USDT', 'VET/USDT', 'YFI/USDT']\n
+    pair_4 ['BCH/USDT', 'BTC/USDT', 'ETH/USDT', 'LINK/USDT', 'LTC/USDT']\n
+    pair_5 ['SOL/USDT', 'SXP/USDT', 'TOMO/USDT']\n
+    """
+    st.write(wr)  
