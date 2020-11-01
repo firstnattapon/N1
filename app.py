@@ -19,12 +19,11 @@ exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': Tru
 e = exchange.load_markets()
 
 filter = st.sidebar.beta_expander('filter')
-with filter:  
-  filter_1 	  =  st.sidebar.text_input('filter_1','T')
-  filter_2 	  =  st.sidebar.text_input('filter_2','BULL/USDT')
-  filter_3 	  =  st.sidebar.text_input('filter_3','BEAR/USDT')
-  filter_4 	  =  st.sidebar.text_input('filter_4','DOWN/USDT')
-  filter_5 	  =  st.sidebar.text_input('filter_5','UP/USDT')
+filter_1 	  =  filter.sidebar.text_input('filter_1','T')
+filter_2 	  =  filter.sidebar.text_input('filter_2','BULL/USDT')
+filter_3 	  =  filter.sidebar.text_input('filter_3','BEAR/USDT')
+filter_4 	  =  filter.sidebar.text_input('filter_4','DOWN/USDT')
+filter_5 	  =  filter.sidebar.text_input('filter_5','UP/USDT')
 
 pair_1   = [i for i in e if i[-1] == filter_1]
 pair_1   = [i for i in pair_1 if i[-9:] != filter_2]
