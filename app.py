@@ -15,7 +15,7 @@ st.beta_set_page_config(
 
 # sns.set_style("whitegrid")
 
-exchange = ccxt.binance({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
+exchange = ccxt.okex({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
 e = exchange.load_markets()
 
 filter = st.sidebar.beta_expander('filter')
