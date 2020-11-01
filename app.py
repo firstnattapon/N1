@@ -12,13 +12,18 @@ st.beta_set_page_config(
   page_title="App",
   layout="wide",
   initial_sidebar_state="expanded")
-
 # sns.set_style("whitegrid")
 
-exchange = ccxt.okex({'apiKey': ''   ,'secret':  ''  , 'enableRateLimit': True }) 
-e = exchange.load_markets()
-
 filter = st.sidebar.beta_expander('filter')
+filter_0 =  filter.text_input('exchange_id','binance')
+exchange_class = getattr(ccxt, filter_0)
+exchange = exchange_class({
+    'apiKey': '',
+    'secret': '',
+    'timeout': 30000,
+    'enableRateLimit': True,
+})
+
 filter_1 	  =  filter.text_input('filter_1','T')
 filter_2 	  =  filter.text_input('filter_2','BULL/USDT')
 filter_3 	  =  filter.text_input('filter_3','BEAR/USDT')
@@ -27,6 +32,7 @@ filter_5 	  =  filter.text_input('filter_5','UP/USDT')
 time_z      =  filter.text_input('time_z', '1h')
 limit_z     =  filter.number_input('limit_z', 1000)
 
+e = exchange.load_markets()
 pair_1   = [i for i in e if i[-1] == filter_1]
 pair_1   = [i for i in pair_1 if i[-9:] != filter_2]
 pair_1   = [i for i in pair_1 if i[-9:] != filter_3]
