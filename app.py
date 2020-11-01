@@ -26,11 +26,11 @@ with filter:
   filter_4 	  =  st.sidebar.text_input('filter_4','DOWN/USDT')
   filter_5 	  =  st.sidebar.text_input('filter_5','UP/USDT')
 
-  pair_1   = [i for i in e if i[-1] == filter_1]
-  pair_1   = [i for i in pair_1 if i[-9:] != filter_2]
-  pair_1   = [i for i in pair_1 if i[-9:] != filter_3]
-  pair_1   = [i for i in pair_1 if i[-9:] != filter_4]
-  pair_1   = [i for i in pair_1 if i[-7:] != filter_5]
+pair_1   = [i for i in e if i[-1] == filter_1]
+pair_1   = [i for i in pair_1 if i[-9:] != filter_2]
+pair_1   = [i for i in pair_1 if i[-9:] != filter_3]
+pair_1   = [i for i in pair_1 if i[-9:] != filter_4]
+pair_1   = [i for i in pair_1 if i[-7:] != filter_5]
 
 @st.cache(suppress_st_warning=True)
 def z (coin):
@@ -189,7 +189,6 @@ limit_d     =   st.sidebar.number_input('limit_d',value=365)
 n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
 shift_d   = st.sidebar.number_input('shift_d', 1)  
   
-
 with col1:
   Prop , forecast = A()
   col1_expander = st.beta_expander('90' , expanded=True)
