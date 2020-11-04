@@ -182,7 +182,7 @@ for i in pair_1[1:]:
 df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
 st.sidebar.write(df_1)  
 
-df_1 = df_1['index'][ df_1['index'] >= limit_z]
+# df_1 = df_1['index'][ df_1['index'] >= limit_z]
 sort 	  =  st.sidebar.number_input('sort',value=50)
 df_f = df_1.head(sort)
 df_f = df_f.index_coin
