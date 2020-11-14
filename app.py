@@ -181,7 +181,7 @@ for i in pair_1[1:]:
   df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
 df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
 
-df_1 = df_1[df_1['index']> 999] 
+df_1 = df_1[df_1['index'] >= 999] 
 st.sidebar.write(df_1)  
 
 # sort 	  =  st.sidebar.number_input('sort',value=50)
