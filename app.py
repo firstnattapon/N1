@@ -30,7 +30,7 @@ filter_3 	  =  filter.text_input('filter_3','BEAR/USDT')
 filter_4 	  =  filter.text_input('filter_4','DOWN/USDT')
 filter_5 	  =  filter.text_input('filter_5','UP/USDT')
 time_z      =  filter.text_input('time_z', '1h')
-limit_z     =  filter.number_input('limit_z', 1440)
+limit_z     =  filter.number_input('limit_z', 1441)
 
 e = exchange.load_markets()
 pair_1   = [i for i in e if i[-1] == filter_1]
