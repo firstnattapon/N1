@@ -181,58 +181,58 @@ for i in pair_1[1:]:
   df_1 = pd.concat([df_1, df_2], axis=0 , ignore_index=True)
 df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
 
-df_1 = df_1[[df_1['index'] >=  limit_z-1]]
+df_1 = df_1[df_1['index']> 900] 
 st.sidebar.write(df_1)  
 
-sort 	  =  st.sidebar.number_input('sort',value=50)
-df_f = df_1.head(sort)
-df_f = df_f.index_coin
-pair_2 = df_f
+# sort 	  =  st.sidebar.number_input('sort',value=50)
+# df_f = df_1.head(sort)
+# df_f = df_f.index_coin
+# pair_2 = df_f
 
-coin_beta_expander = st.sidebar.beta_expander('coin')
-coin = coin_beta_expander.radio('coin', [ i for i  in enumerate(pair_2)] ) ; coin = coin[-1]
-timeframe =  st.sidebar.selectbox('time',('1d' , '15m' ,'1h' , '4h'))
-limit_a     =   st.sidebar.number_input('limit_a',value=90)
-limit_b     =   st.sidebar.number_input('limit_b',value=180)
-limit_c     =   st.sidebar.number_input('limit_c',value=270)
-limit_d     =   st.sidebar.number_input('limit_d',value=365)
-n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
-shift_d   = st.sidebar.number_input('shift_d', 1)  
+# coin_beta_expander = st.sidebar.beta_expander('coin')
+# coin = coin_beta_expander.radio('coin', [ i for i  in enumerate(pair_2)] ) ; coin = coin[-1]
+# timeframe =  st.sidebar.selectbox('time',('1d' , '15m' ,'1h' , '4h'))
+# limit_a     =   st.sidebar.number_input('limit_a',value=90)
+# limit_b     =   st.sidebar.number_input('limit_b',value=180)
+# limit_c     =   st.sidebar.number_input('limit_c',value=270)
+# limit_d     =   st.sidebar.number_input('limit_d',value=365)
+# n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
+# shift_d   = st.sidebar.number_input('shift_d', 1)  
   
-with col1:
-  Prop , forecast = A()
-  col1_expander = st.beta_expander('90' , expanded=True)
-  with col1_expander:  
-    sum_all(Prop , forecast)
+# with col1:
+#   Prop , forecast = A()
+#   col1_expander = st.beta_expander('90' , expanded=True)
+#   with col1_expander:  
+#     sum_all(Prop , forecast)
 
-with col2:
-  Prop , forecast = B()
-  col2_expander = st.beta_expander('180' , expanded=True)
-  with col2_expander:  
-    sum_all(Prop , forecast)
+# with col2:
+#   Prop , forecast = B()
+#   col2_expander = st.beta_expander('180' , expanded=True)
+#   with col2_expander:  
+#     sum_all(Prop , forecast)
   
-with col3:
-  Prop , forecast = C()
-  col3_expander = st.beta_expander('270' , expanded=True)
-  with col3_expander:  
-    sum_all(Prop , forecast)
+# with col3:
+#   Prop , forecast = C()
+#   col3_expander = st.beta_expander('270' , expanded=True)
+#   with col3_expander:  
+#     sum_all(Prop , forecast)
     
-with col4:
-  Prop , forecast = D() 
-  col4_expander = st.beta_expander('365' , expanded=True)
-  with col4_expander:  
-    sum_all(Prop , forecast)
+# with col4:
+#   Prop , forecast = D() 
+#   col4_expander = st.beta_expander('365' , expanded=True)
+#   with col4_expander:  
+#     sum_all(Prop , forecast)
     
-with w:
-  vae = st.beta_expander('vae')
-  with vae:  
-    wr = """
-    pair_0 ['ALGO/USDT', 'BAL/USDT', 'CHZ/USDT', 'KNC/USDT', 'MATIC/USDT', 'PAXG/USDT', 'XRP/USDT', 'XTZ/USDT']\n
-    pair_1 ['DOGE/USDT', 'DOT/USDT', 'EOS/USDT', 'OMG/USDT', 'THETA/USDT', 'TRX/USDT', 'ZEC/USDT']\n
-    pair_2 ['ADA/USDT', 'ATOM/USDT', 'BNB/USDT', 'ETC/USDT', 'MKR/USDT', 'RUNE/USDT']\n
-    pair_3 ['COMP/USDT', 'NEO/USDT', 'SUSHI/USDT', 'UNI/USDT', 'VET/USDT', 'YFI/USDT']\n
-    pair_4 ['BCH/USDT', 'BTC/USDT', 'ETH/USDT', 'LINK/USDT', 'LTC/USDT']\n
-    pair_5 ['SOL/USDT', 'SXP/USDT', 'TOMO/USDT']\n
-    """
-    st.write(wr)  
+# with w:
+#   vae = st.beta_expander('vae')
+#   with vae:  
+#     wr = """
+#     pair_0 ['ALGO/USDT', 'BAL/USDT', 'CHZ/USDT', 'KNC/USDT', 'MATIC/USDT', 'PAXG/USDT', 'XRP/USDT', 'XTZ/USDT']\n
+#     pair_1 ['DOGE/USDT', 'DOT/USDT', 'EOS/USDT', 'OMG/USDT', 'THETA/USDT', 'TRX/USDT', 'ZEC/USDT']\n
+#     pair_2 ['ADA/USDT', 'ATOM/USDT', 'BNB/USDT', 'ETC/USDT', 'MKR/USDT', 'RUNE/USDT']\n
+#     pair_3 ['COMP/USDT', 'NEO/USDT', 'SUSHI/USDT', 'UNI/USDT', 'VET/USDT', 'YFI/USDT']\n
+#     pair_4 ['BCH/USDT', 'BTC/USDT', 'ETH/USDT', 'LINK/USDT', 'LTC/USDT']\n
+#     pair_5 ['SOL/USDT', 'SXP/USDT', 'TOMO/USDT']\n
+#     """
+#     st.write(wr)  
     
