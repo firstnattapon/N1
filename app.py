@@ -30,7 +30,7 @@ filter_3 	  =  filter.text_input('filter_3','BEAR/USDT')
 filter_4 	  =  filter.text_input('filter_4','DOWN/USDT')
 filter_5 	  =  filter.text_input('filter_5','UP/USDT')
 time_z      =  filter.text_input('time_z', '1h')
-limit_z     =  filter.number_input('limit_z', 1441)
+limit_z     =  filter.number_input('limit_z', 2161)
 
 e = exchange.load_markets()
 pair_1   = [i for i in e if i[-1] == filter_1]
@@ -184,7 +184,7 @@ df_1 =  df_1.sort_values(['sum_all'] , axis=0 ,ascending=False)
 df_1 = df_1[df_1['index'] >= (limit_z-1)] 
 st.sidebar.write(df_1)  
 
-sort 	  =  st.sidebar.number_input('sort',value=50)
+sort 	  =  st.sidebar.number_input('sort',value=15)
 df_f = df_1.head(sort)
 df_f = df_f.index_coin
 pair_2 = df_f
