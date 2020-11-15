@@ -156,7 +156,7 @@ def sum_all (Prop ,forecast):
   pct['y'] = Prop.y.pct_change()
   pct['ohlc'] = Prop.y
   pct['yhat'] = forecast.yhat
-  pct['%'] = pct['ohlc'] / pct['yhat']
+  pct['%'] = ((pct['ohlc'] / pct['yhat']) - 1)*100
   pct['cf_buy'] =  pct.y.map( lambda  x : np.where (x > 0 , x  , 0 ))  
   pct['sum_buy'] = pct.cf_buy.cumsum()    
   pct['cf_sell'] =  pct.y.map( lambda  x : np.where (x < 0 , abs(x)  , 0) )  
