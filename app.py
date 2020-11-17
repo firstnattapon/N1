@@ -52,6 +52,7 @@ def z (coin):
   Prop = Prop.iloc[ : , -2:]
   return Prop
 
+@st.cache(suppress_st_warning=True)
 def sum_all_z (Prop):
   pct = pd.DataFrame()
   pct['y'] = Prop.y.pct_change()
@@ -67,6 +68,7 @@ def sum_all_z (Prop):
   pct = pct.reset_index()
   return pct
 
+@st.cache(suppress_st_warning=True)
 def A (lp):
   global shift_d ;   global coin ; global limit_a
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit= limit_a )
@@ -170,7 +172,7 @@ def sum_all (Prop ,forecast):
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all' , '%' ]]
   st.write(pct.tail(1))  
   
-col0, _ , _  = st.beta_columns(3)
+_ , col0 , _  = st.beta_columns(3)
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 w , _  = st.beta_columns(2)
@@ -204,7 +206,8 @@ n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,
 shift_d   = st.sidebar.number_input('shift_d', 1)  
 
 with col0:
-  lb = st.slider('Looking back', min_value=-1, max_value=-14)
+#   lb = st.slider('Looking back', min_value=-1, max_value=-14)
+  lb =   st.number_input('Looking_back',value=-1)
 
 with col1:
   Prop , forecast = A(lb)
