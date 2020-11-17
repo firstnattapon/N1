@@ -67,7 +67,7 @@ def sum_all_z (Prop):
   pct = pct.reset_index()
   return pct
 
-def A ():
+def A (lp):
   global shift_d ;   global coin ; global limit_a
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit= limit_a )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
@@ -79,6 +79,7 @@ def A ():
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
+  Prop = Prop[:lp]
 
   m = Prophet( n_changepoints = n_changepoints )
   m.fit(Prop) 
@@ -88,7 +89,7 @@ def A ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
 
-def B ():
+def B (lp):
   global shift_d ;   global coin ; global limit_b
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_b )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
@@ -100,6 +101,7 @@ def B ():
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
+  Prop = Prop[:lp]
 
   m = Prophet( n_changepoints = n_changepoints )
   m.fit(Prop) 
@@ -109,7 +111,7 @@ def B ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
   
-def C ():
+def C (lp):
   global shift_d ;   global coin ;  global limit_c
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_c )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
@@ -121,6 +123,7 @@ def C ():
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
+  Prop = Prop[:lp]
 
   m = Prophet( n_changepoints = n_changepoints )
   m.fit(Prop) 
@@ -130,7 +133,7 @@ def C ():
   st.pyplot() ; #st.write(Prop.tail(1))
   return Prop , forecast
   
-def D ():
+def D (lp):
   global shift_d ;   global coin ; global limit_c
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit=limit_c )
   ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
@@ -142,6 +145,7 @@ def D ():
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
+  Prop = Prop[:lp]
 
   m = Prophet( n_changepoints = n_changepoints )
   m.fit(Prop) 
@@ -201,27 +205,28 @@ shift_d   = st.sidebar.number_input('shift_d', 1)
 
 with col0:
   lb = st.slider('Looking back', min_value=0, max_value=14)
+  lb = lb - 1
 
 with col1:
-  Prop , forecast = A()
+  Prop , forecast = A(lb)
   col1_expander = st.beta_expander('90' , expanded=True)
   with col1_expander:  
     sum_all(Prop , forecast)
 
 with col2:
-  Prop , forecast = B()
+  Prop , forecast = B(lb)
   col2_expander = st.beta_expander('180' , expanded=True)
   with col2_expander:  
     sum_all(Prop , forecast)
   
 with col3:
-  Prop , forecast = C()
+  Prop , forecast = C(lb)
   col3_expander = st.beta_expander('270' , expanded=True)
   with col3_expander:  
     sum_all(Prop , forecast)
     
 with col4:
-  Prop , forecast = D() 
+  Prop , forecast = D(lb) 
   col4_expander = st.beta_expander('365' , expanded=True)
   with col4_expander:  
     sum_all(Prop , forecast)
