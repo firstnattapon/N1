@@ -67,7 +67,6 @@ def sum_all_z (Prop):
   pct = pct.reset_index()
   return pct
 
-@st.cache(suppress_st_warning=True)
 def A (lp):
   global shift_d ;   global coin ; global limit_a
   ohlcv =  exchange.fetch_ohlcv( coin  , timeframe , limit= limit_a )
@@ -205,7 +204,6 @@ n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,
 shift_d   = st.sidebar.number_input('shift_d', 1)  
 
 with col0:
-#   lb = st.slider('Looking back', min_value=-1, max_value=-14)
   lb =   st.number_input('Looking_back',value=-1)
 
 with col1:
