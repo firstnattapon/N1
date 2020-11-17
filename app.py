@@ -204,8 +204,8 @@ n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,
 shift_d   = st.sidebar.number_input('shift_d', 1)  
 
 with col0:
-  lb = st.slider('Looking back', min_value=0, max_value=14)
-  lb = lb - 1
+  lb = st.slider('Looking back', min_value=-1, max_value=-14)
+#   lb = lb
 
 with col1:
   Prop , forecast = A(lb)
