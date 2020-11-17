@@ -198,7 +198,10 @@ limit_c     =   st.sidebar.number_input('limit_c',value=270)
 limit_d     =   st.sidebar.number_input('limit_d',value=365)
 n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,step=1)
 shift_d   = st.sidebar.number_input('shift_d', 1)  
-  
+
+with col0:
+  lb = st.slider('Looking back', min_value=0, max_value=14)
+
 with col1:
   Prop , forecast = A()
   col1_expander = st.beta_expander('90' , expanded=True)
