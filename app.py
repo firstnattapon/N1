@@ -170,7 +170,7 @@ def sum_all (Prop ,forecast):
   pct = pct[['sum_buy', 'sum_sell' ,'sum_all' , '%' ]]
   st.write(pct.tail(1))  
   
-_, col0 , _  = st.beta_columns(3)
+col0, _ , _  = st.beta_columns(3)
 col1, col2 = st.beta_columns(2)
 col3, col4 = st.beta_columns(2)
 w , _  = st.beta_columns(2)
@@ -205,7 +205,6 @@ shift_d   = st.sidebar.number_input('shift_d', 1)
 
 with col0:
   lb = st.slider('Looking back', min_value=-1, max_value=-14)
-#   lb = lb
 
 with col1:
   Prop , forecast = A(lb)
