@@ -79,7 +79,8 @@ def A (lp):
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
-  Prop = Prop[:lp]
+  if lp != 0:
+    Prop = Prop[:lp]
 
   m = Prophet( n_changepoints = n_changepoints )
   m.fit(Prop) 
@@ -101,7 +102,8 @@ def B (lp):
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
-  Prop = Prop[:lp]
+  if lp != 0:
+    Prop = Prop[:lp]
 
   m = Prophet( n_changepoints = n_changepoints )
   m.fit(Prop) 
@@ -123,8 +125,9 @@ def C (lp):
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
-  Prop = Prop[:lp]
-
+  if lp != 0:
+    Prop = Prop[:lp]
+    
   m = Prophet( n_changepoints = n_changepoints )
   m.fit(Prop) 
   future = m.make_future_dataframe(periods=shift_d)
@@ -145,7 +148,8 @@ def D (lp):
   Prop['ds'] = Prop['t'] 
   Prop['y'] =  (Prop['o']  + Prop['h']  +Prop['l']  +Prop['c'] ) / 4
   Prop = Prop.iloc[ : , -2:]
-  Prop = Prop[:lp]
+  if lp != 0:
+    Prop = Prop[:lp]
 
   m = Prophet( n_changepoints = n_changepoints )
   m.fit(Prop) 
@@ -204,7 +208,7 @@ n_changepoints =  st.sidebar.number_input('n_changepoints',min_value=0,value=25,
 shift_d   = st.sidebar.number_input('shift_d', 1)  
 
 with col0:
-  lb =   st.number_input('Looking_back',value=-1)
+  lb =   st.number_input('Looking_back',value=0)
 
 with col1:
   Prop , forecast = A(lb)
