@@ -52,7 +52,6 @@ def z (coin):
   Prop = Prop.iloc[ : , -2:]
   return Prop
 
-@st.cache(suppress_st_warning=True)
 def sum_all_z (Prop):
   pct = pd.DataFrame()
   pct['y'] = Prop.y.pct_change()
