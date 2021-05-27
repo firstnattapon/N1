@@ -1,5 +1,6 @@
 streamlit
 pandas
+pystan
 fbprophet==0.7
 plotly
 ccxt
