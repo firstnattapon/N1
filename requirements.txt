@@ -2,7 +2,7 @@ streamlit == 0.68.0
 pandas == 1.0.5
 fbprophet
 plotly
-ccxt == 1.30.51
+ccxt
 matplotlib
 seaborn
 numpy
