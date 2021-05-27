@@ -1,10 +1,10 @@
 streamlit
 pandas
-fbprophet == 0.7.1
+pytsan
+fbprophet 
 plotly
 ccxt
 matplotlib
 seaborn
 numpy
 datetime
-pystan
