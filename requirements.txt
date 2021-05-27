@@ -1,6 +1,6 @@
 streamlit
-pandas
 pytsan
+pandas
 fbprophet 
 plotly
 ccxt
