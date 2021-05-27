@@ -1,5 +1,5 @@
-streamlit == 0.68.0
-pandas == 1.0.5
+streamlit
+pandas
 fbprophet
 plotly
 ccxt
