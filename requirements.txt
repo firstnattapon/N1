@@ -1,6 +1,6 @@
 streamlit
 pandas
-fbprophet
+fbprophet == 0.7.1
 plotly
 ccxt
 matplotlib
