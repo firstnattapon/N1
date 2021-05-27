@@ -1,7 +1,6 @@
 streamlit
-pystan == 3.1.1
 pandas
-fbprophet 
+fbprophet==0.7
 plotly
 ccxt
 matplotlib
