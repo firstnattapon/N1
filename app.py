@@ -24,7 +24,7 @@ exchange = exchange_class({
     'enableRateLimit': True,
 })
 
-filter_1 	  =  filter.text_input('filter_1','P')
+filter_1 	  =  filter.text_input('filter_1','T')
 filter_2 	  =  filter.text_input('filter_2','BULL/USDT')
 filter_3 	  =  filter.text_input('filter_3','BEAR/USDT')
 filter_4 	  =  filter.text_input('filter_4','DOWN/USDT')
